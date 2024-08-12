@@ -65,7 +65,6 @@
 
   .site-nav {
     margin-inline-start: 0;
-
     @include breakpoint($small) {
       float: inline-end;
     }
@@ -83,6 +82,7 @@
   display: block;
   list-style-type: none;
   white-space: nowrap;
+  font-size: $type-size-6;
 
   &--lg {
     padding-inline-end: 2em;
