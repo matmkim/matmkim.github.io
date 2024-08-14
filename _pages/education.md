@@ -6,11 +6,11 @@ permalink: /education/
 ### Seoul National University
 *2023 ~ current*
 
-- Major: [Computer Science and Engineering](https://cse.snu.ac.kr/)
-- Current GPA: 4.21 / 4.3 (67 credits)
-- 2024.07 ~ 2024.10, IDS Lab UROP 
-  - Supervied under Prof. Sang-goo Lee
-  - Project title: Text-to-SQL Generation using Intermediate Representation
+* Major: [Computer Science and Engineering](https://cse.snu.ac.kr/)
+* Current GPA: 4.21 / 4.3 (67 credits)
+* 2024.07 ~ 2024.10, IDS Lab UROP 
+  * Supervied under Prof. Sang-goo Lee
+  * Project title: Text-to-SQL Generation using Intermediate Representation
 
 ### Korea Science Academy of KAIST
 *2020 ~ 2023*
