@@ -18,7 +18,7 @@ permalink: /education/
 - GPA: 4.14 / 4.3 (top 10% of the class)
 - Research: "A Secret Sharing Scheme without Third-Party Dealers" in Cryptography. 
   - 2022 [Regeneron ISEF](https://www.societyforscience.org/isef/regeneron-isef-2022/)(International Science and Engineering Fair), Systems Software category, *South Korea Finalist*  (Team Leader)
-  - 2021 R&E Project Presentation Contest for the Scientific Talent, *Grand Prize(Ministry of Science and ICT award)*  (Team Leader)
+  - 2021 R&E Project Presentation Contest for the Scientific Talent, *Grand Prize(Ministry of Science and ICT award)*  
 
 ### University of Cambridge
 *Summer 2022*
