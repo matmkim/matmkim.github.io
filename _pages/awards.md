@@ -1,10 +1,10 @@
 --- 
-title: " "
+title: "Awards"
 permalink: /awards/
 ---
 
-# Awards
 
+-----------
 ### Major Awards
 - 2021 R&E Project Presentation Contest for the Scientific Talent, \\
 Grand Prize(Ministry of Science and ICT award)  *(Team Leader)*

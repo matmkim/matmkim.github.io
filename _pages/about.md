@@ -1,10 +1,10 @@
 --- 
-title: " "
-permalink: /about/
+title: "About me"
+permalink: /
 ---
 
-## About Me
 
+-----------
 I am a university student majoring in Computer Science and Engineering at Seoul National University. My primary interests span AI, cryptography, and software engineering, areas in which I have actively engaged through various research projects and internships.
 
 Previously, I studied at the Korea Science Academy of KAIST, graduating in the top 10% of my class.
