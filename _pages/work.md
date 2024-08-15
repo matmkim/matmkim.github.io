@@ -19,7 +19,7 @@ permalink: /work/
 
 ### AIBIZON AI LAB
 
-*2024.03 ~ 2023.04*
+*2024.03 ~ 2024.04*
 
 Participated in the online Artificial Intelligence internship conducted by [AIBIZON](https://www.seteuk.com/).
 

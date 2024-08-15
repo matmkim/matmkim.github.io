@@ -117,16 +117,14 @@ author:
   avatar           : "profile.jpg" # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
   bio              : "CS Undergraduate @ SNU"
   location         : "Seoul National University"
+  email            : "matthewkim.stu@gmail.com"
   links:
-    - label: "Email"
-      icon: "fas fa-fw fa-envelope-square"
-      url: "matthewkim.stu@gmail.com"
     - label: "LinkedIn"
       icon: "fab fa-linkedin"
       url: "https://www.linkedin.com/in/minwoo-kim-b24a48287/"
     - label: "GitHub"
       icon: "fab fa-fw fa-github"
-      url: "https://github.com/rachmanin-off"
+      url: "https://github.com/matmkim"
 
 # Site Footer
 footer:
