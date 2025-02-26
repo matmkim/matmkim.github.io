@@ -7,11 +7,11 @@ permalink: /work/
 
 ### Republic of Korea Air Force
 
-_2024.10 ~ Current_
+_2024.10 ~ present_
 
 Currently serving as an AI system developer in the Republic of Korea Air Force.
 
-- Keywords: Computer Vision, Speech-to-Text (STT)
+-  Developing Computer Vision and Speech-to-Text(STT) systems
 
 ### AIBIZON AI LAB
 
