@@ -5,7 +5,7 @@ permalink: /
 
 
 -----------
-I am a university student majoring in Computer Science and Engineering at Seoul National University. My primary interests span AI, cryptography, and software engineering, areas in which I have actively engaged through various research projects and internships.
+I am a university student majoring in Computer Science and Engineering at Seoul National University. My primary interests span AI, cryptography, and software engineering, areas in which I have actively engaged through various research projects and internships. Currently I am serving in the Repulib of Korea Air Force as an AI system developer.
 
 Previously, I studied at the Korea Science Academy of KAIST, graduating in the top 10% of my class.
 
