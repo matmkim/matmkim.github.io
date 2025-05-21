@@ -33,6 +33,7 @@ words_per_minute         : 200
 enable_copy_code_button  : # true, false (default)
 copyright                : Matthew Minwoo Kim # "copyright" name, defaults to site.title
 copyright_url            : https://www.linkedin.com/in/minwoo-kim-b24a48287/ # "copyright" URL, defaults to site.url
+site_version             : "1.0.0" # 캐시 버스팅을 위한 사이트 버전
 comments:
   provider               : # false (default), "disqus", "discourse", "facebook", "staticman", "staticman_v2", "utterances", "giscus", "custom"
   disqus:
@@ -347,6 +348,3 @@ defaults:
       layout: talk
       author_profile: true
       share: true
-
-# 캐시 버스팅을 위한 사이트 버전 (수정할 때마다 값을 변경하세요)
-site_version: 1.1.0

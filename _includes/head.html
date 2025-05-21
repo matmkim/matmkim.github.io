@@ -15,6 +15,7 @@
 <meta http-equiv="Expires" content="0">
 
 <!-- 캐시 버스팅을 위한 JavaScript -->
+<script src="{{ '/assets/js/cache-buster.js' | relative_url }}?v={{ site.github.build_revision }}"></script>
 <script>
   // 서비스 워커 등록 - 버전 기반 캐시 제어
   document.addEventListener('DOMContentLoaded', function() {
@@ -40,8 +41,8 @@
 </script>
 
 <!-- For all browsers -->
-<link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}?v={{ site.site_version }}">
-<link rel="stylesheet" href="{{ '/assets/css/custom-spacing.css' | relative_url }}?v={{ site.site_version }}">
+<link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}?v={{ site.github.build_revision }}">
+<link rel="stylesheet" href="{{ '/assets/css/custom-spacing.css' | relative_url }}?v={{ site.github.build_revision }}">
 <link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@latest/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
 <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@latest/css/all.min.css"></noscript>
 
