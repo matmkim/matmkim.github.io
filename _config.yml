@@ -120,7 +120,7 @@ author:
   email            : "matthewkim.stu@gmail.com"
   links:
     - label: "LinkedIn"
-      icon: "fab fa-linkedin"
+      icon: "fab fa-fw fa-linkedin"
       url: "https://www.linkedin.com/in/minwoo-kim-b24a48287/"
     - label: "GitHub"
       icon: "fab fa-fw fa-github"
@@ -130,7 +130,7 @@ author:
 footer:
   links:
     - label: "Linkedin"
-      icon: "fab fa-linkedin"
+      icon: "fab fa-fw fa-linkedin"
       url: "https://www.linkedin.com/in/minwoo-kim-b24a48287/"
 #    - label: "GitLab"
 #      icon: "fab fa-fw fa-gitlab"

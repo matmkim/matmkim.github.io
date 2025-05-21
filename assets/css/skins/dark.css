@@ -201,12 +201,36 @@ a:hover {
   color: #999; /* Default for other uses if any */
 }
 
-/* Remove borders from follow buttons in sidebar for mobile/narrow views - more specific selector */
+/* Remove borders from follow buttons in sidebar for mobile/narrow views */
+.author__urls-wrapper .author__urls li a {
+  border: none !important;
+}
+
+/* Fix dropdown for mobile follow button - dark background */
+.author__urls-wrapper .author__urls.is--visible {
+  background-color: #1a1e24 !important; 
+  border-color: #3a414b !important;
+}
+
+.author__urls-wrapper .author__urls.is--visible li a {
+  color: #eaeaea !important;
+  border-color: #3a414b !important;
+}
+
+/* Completely remove all borders from follow buttons in mobile view */
+.author__urls-wrapper button,
+.greedy-nav__toggle,
 .author__urls-wrapper .author__urls li a,
 .author__urls-wrapper .author__urls.is--visible li a,
-.sidebar .author__urls-wrapper button + .author__urls li a,
-.sidebar nav.greedy-nav .visible-links li a,
-.sidebar .social-icons a {
+.author__urls-wrapper .author__urls li,
+.sidebar .author__urls li {
   border: none !important;
   box-shadow: none !important;
-} 
+  text-shadow: none !important;
+  outline: none !important;
+}
+
+.author__urls-wrapper .author__urls.is--visible li a:hover {
+  background-color: #252a34 !important;
+}
+
