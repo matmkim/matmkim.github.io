@@ -39,20 +39,20 @@ body.layout--category #main .archive {
   
   /* Inner content has padding */
   .masthead__inner-wrap {
-    padding-left: 30px !important; 
-    padding-right: 30px !important;
+    padding-left: 20px !important; 
+    padding-right: 20px !important;
   }
   
   .page__footer-follow,
   .page__footer-copyright {
-    padding-left: 30px !important;
-    padding-right: 30px !important;
+    padding-left: 20px !important;
+    padding-right: 20px !important;
   }
   
   /* Main content has padding */
   .initial-content {
-    padding-left: 20px !important;
-    padding-right: 20px !important;
+    padding-left: 10px !important;
+    padding-right: 10px !important;
   }
   
   /* Body reset */
