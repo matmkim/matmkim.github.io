@@ -1,8 +1,8 @@
 ---
 layout: null
 ---
-// 서비스 워커 - 버전 기반 캐시 버스팅 (모바일 최적화)
-const CACHE_VERSION = 'v5';
+// 서비스 워커 - 버전 기반 캐시 버스팅 (URL 파라미터 없음)
+const CACHE_VERSION = 'v6';
 // 타임스탬프 추가하여 항상 고유한 캐시 이름 사용
 const TIMESTAMP = {{ site.time | date: '%s' }};
 const SITE_VERSION = '{{ site.site_version }}';
@@ -28,7 +28,7 @@ const NETWORK_FIRST_PATTERNS = [
 
 // 서비스 워커 설치
 self.addEventListener('install', function(event) {
-  console.log('[ServiceWorker] 설치중...');
+  console.log('[ServiceWorker] 설치중... 버전:', CACHE_VERSION, '사이트 버전:', SITE_VERSION);
   
   // 즉시 활성화를 위한 대기 건너뛰기
   self.skipWaiting();
@@ -85,13 +85,9 @@ self.addEventListener('fetch', function(event) {
   const isMobile = event.request.headers.get('user-agent') && 
                    isMobileBrowser(event.request.headers.get('user-agent'));
   
-  // 특별한 강제 새로고침 요청 처리
-  const url = new URL(event.request.url);
-  const forceRefresh = url.searchParams.has('t') || url.searchParams.has('v');
-  
-  // HTML, CSS, JS 등 중요 자산 또는 모바일 브라우저 또는 강제 새로고침 요청은 네트워크 우선 전략 사용
-  if (shouldUseNetworkFirst(event.request.url) || isMobile || forceRefresh) {
-    console.log(`[ServiceWorker] 네트워크 우선 전략: ${event.request.url} (모바일:${isMobile}, 강제새로고침:${forceRefresh})`);
+  // HTML, CSS, JS 등 중요 자산 또는 모바일 브라우저는 네트워크 우선 전략 사용
+  if (shouldUseNetworkFirst(event.request.url) || isMobile) {
+    console.log(`[ServiceWorker] 네트워크 우선 전략: ${event.request.url} (모바일:${isMobile})`);
     
     event.respondWith(
       fetch(event.request, {
@@ -109,10 +105,8 @@ self.addEventListener('fetch', function(event) {
         if (networkResponse && networkResponse.status === 200) {
           const responseToCache = networkResponse.clone();
           caches.open(CACHE_NAME).then(function(cache) {
-            // 요청 URL에서 쿼리 파라미터 제거하여 캐시
-            const urlWithoutQuery = event.request.url.split('?')[0];
-            const cleanRequest = new Request(urlWithoutQuery);
-            cache.put(cleanRequest, responseToCache);
+            // 요청을 그대로 캐시 (URL 파라미터 제거하지 않음)
+            cache.put(event.request, responseToCache);
           });
         }
         return networkResponse;

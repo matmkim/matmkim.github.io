@@ -96,14 +96,21 @@ jobs:
             Cache-Control: no-cache, no-store, must-revalidate, max-age=0
             Pragma: no-cache
             Expires: 0
+            X-Version: {{ site.site_version }}
           EOL
           
           # _site 폴더에 Clear-Site-Data 메타 태그 자동 추가
-          find _site -name "*.html" -exec sed -i '/<\/head>/ i\<meta http-equiv="Clear-Site-Data" content="*">' {} \;
+          find _site -name "*.html" -exec sed -i '/<\/head>/ i\<meta http-equiv="Clear-Site-Data" content="\"cache\", \"storage\"">' {} \;
           
-          # _site/index.html에 캐시 버스팅 타임스탬프 추가
+          # _site/index.html에 타임스탬프 속성 추가
           TIMESTAMP=$(date +"%Y%m%d%H%M%S")
-          sed -i "s/<html /<html data-timestamp=\"$TIMESTAMP\" /" _site/index.html
+          sed -i "s/<html /<html data-version=\"$TIMESTAMP\" /" _site/index.html
+          
+          # HTML 파일에 버전 메타 태그 추가
+          find _site -name "*.html" -exec sed -i "/<meta charset=/a \  <meta name=\"version\" content=\"${TIMESTAMP}\">" {} \;
+          
+          # HTML 파일에 ETag 헤더용 버전 코멘트 추가
+          find _site -name "*.html" -exec sed -i "/<html /a \<!-- Version: ${TIMESTAMP} -->" {} \;
           
           echo 'Cache invalidation files created.'
       - name: Upload artifact
