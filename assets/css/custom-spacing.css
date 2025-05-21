@@ -24,4 +24,43 @@ body.layout--category #main .archive {
 /* Make sure sidebar doesn't get the extra padding */
 .sidebar {
   padding-top: 0 !important;
-} 
+}
+
+/* Spacing for mobile/narrow views - background extends fully, content has margin */
+@media (max-width: 768px) {
+  /* Background containers extend to edge with no padding */
+  .masthead,
+  .page__footer {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+  
+  /* Inner content has padding */
+  .masthead__inner-wrap {
+    padding-left: 30px !important; 
+    padding-right: 30px !important;
+  }
+  
+  .page__footer-follow,
+  .page__footer-copyright {
+    padding-left: 30px !important;
+    padding-right: 30px !important;
+  }
+  
+  /* Main content has padding */
+  .initial-content {
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+  }
+  
+  /* Body reset */
+  body {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    overflow-x: hidden; /* Prevent horizontal scrollbar */
+  }
+}
+
+/* Remove all additional footer height styling */ 

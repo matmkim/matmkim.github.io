@@ -146,6 +146,7 @@ body.layout--single div[itemscope] article.page .page__inner-wrap section.page__
 
 .page__footer-follow a {
   color: #eaeaea;
+  border: none; /* Remove borders from follow links */
 }
 
 /* Footer social media icons - match sidebar icons style */
@@ -198,4 +199,14 @@ a:hover {
 /* .last-updated general style - ensure this doesn't conflict or make it more specific if needed elsewhere */
 .last-updated {
   color: #999; /* Default for other uses if any */
+}
+
+/* Remove borders from follow buttons in sidebar for mobile/narrow views - more specific selector */
+.author__urls-wrapper .author__urls li a,
+.author__urls-wrapper .author__urls.is--visible li a,
+.sidebar .author__urls-wrapper button + .author__urls li a,
+.sidebar nav.greedy-nav .visible-links li a,
+.sidebar .social-icons a {
+  border: none !important;
+  box-shadow: none !important;
 } 
