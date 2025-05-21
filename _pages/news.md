@@ -9,6 +9,8 @@ classes:
 author_profile: true
 ---
 
+--------
+
 Here you'll find the latest news and updates.
 
 

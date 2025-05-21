@@ -1,14 +1,17 @@
----
-# Only the main Sass file needs front matter (the dashes are enough)
-search: false
----
-
 @charset "utf-8";
 
 @import "minimal-mistakes/skins/{{ site.minimal_mistakes_skin | default: 'default' }}"; // skin
 @import "minimal-mistakes"; // main partials
 
-// Custom styles for bullet lists
+/* Add padding between header and right-side main content only */
+body #main .page,
+body #main .archive:not(.layout--category .archive),
+body #main .splash {
+  padding-top: 1em !important; /* Force padding with !important */
+}
+
+
+/* Custom styles for nested bullet lists */
 ul ul {
-  font-size: 0.9rem; 
+  font-size: 0.9rem;
 }

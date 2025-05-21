@@ -1,0 +1,44 @@
+/* Skin Switcher Button Styles */
+#skin-toggle {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 1000;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: #f0f0f0;
+  color: #333;
+  border: none;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  font-size: 1.2em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+#skin-toggle:hover {
+  background-color: #e0e0e0;
+  transform: scale(1.05);
+}
+
+/* Dark skin specific styles for the toggle button */
+body[data-skin="dark"] #skin-toggle {
+  background-color: #333;
+  color: #f0f0f0;
+}
+
+body[data-skin="dark"] #skin-toggle:hover {
+  background-color: #444;
+}
+
+/* Animation for the icon */
+#skin-toggle i {
+  transition: transform 0.5s ease;
+}
+
+#skin-toggle:hover i {
+  transform: rotate(30deg);
+} 

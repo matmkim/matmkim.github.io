@@ -11,7 +11,7 @@ _2024.10 ~ present_
 
 Currently serving as an AI system developer in the Republic of Korea Air Force.
 
--  Developing Computer Vision and Speech-to-Text(STT) systems
+-  Researching and developing military-specific Computer Vision and Speech-to-Text(STT) systems 
 
 ### AIBIZON AI LAB
 

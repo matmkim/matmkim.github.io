@@ -1,0 +1,201 @@
+/* ==========================================================================
+   Dark skin
+   ========================================================================== */
+
+/* Custom Dark Mode Styles */
+body {
+  background-color: #252a34;
+  color: #eaeaea;
+}
+
+.page__content {
+  color: #eaeaea;
+}
+
+/* Fix page titles - more specific selectors with !important */
+.page__title, .page__meta, .page__lead, .archive__item-title, .site-title,
+.page h1, .page h2, .page h3, .page h4, .page h5, .page h6 {
+  color: #eaeaea !important;
+}
+.page__title a, .archive__item-title a, .site-title a,
+.page h1 a, .page h2 a, .page h3 a, .page h4 a, .page h5 a, .page h6 a {
+  color: #eaeaea !important;
+}
+
+/* Additional title fixes with higher specificity */
+.layout--single .page__inner-wrap .page__title,
+.layout--single h1.page__title,
+.archive .archive__item-title,
+.home .page__title,
+.page .page__title {
+  color: #eaeaea !important;
+}
+.layout--single .page__inner-wrap .page__title a,
+.layout--single h1.page__title a,
+.archive .archive__item-title a,
+.home .page__title a,
+.page .page__title a {
+  color: #eaeaea !important;
+}
+
+/* News page specific fixes */
+.layout--category .page__title,
+.taxonomy-News .page__title,
+.taxonomy-News .archive__item-title,
+.taxonomy-News h1, .taxonomy-News h2, .taxonomy-News h3 {
+  color: #eaeaea !important;
+}
+.layout--category .page__title a,
+.taxonomy-News .page__title a,
+.taxonomy-News .archive__item-title a,
+.taxonomy-News h1 a, .taxonomy-News h2 a, .taxonomy-News h3 a {
+  color: #eaeaea !important;
+}
+.taxonomy-News .page__content,
+.taxonomy-News .page__content p {
+  color: #eaeaea !important;
+}
+
+
+/* Force all page content to use light text color - increased specificity */
+body.layout--single .page__content p,
+body.layout--single .page__content li,
+body.layout--single .page__content div,
+body.layout--single .page__content span,
+body.layout--single .page__content a:not(.btn),
+body.layout--single .page__content table,
+body.layout--single .page__content td,
+body.layout--single .page__content th,
+body.layout--single .page__content blockquote {
+  color: #eaeaea !important;
+}
+
+/* Specific fixes for CV and Publications pages, ensuring high specificity */
+body.layout--single div[itemscope] article.page .page__inner-wrap section.page__content p,
+body.layout--single div[itemscope] article.page .page__inner-wrap section.page__content div {
+ color: #eaeaea !important;
+}
+
+/* CV page specific style for last-updated text, overriding inline style */
+body.layout--single div[itemscope] article.page .page__inner-wrap section.page__content div.pdf-container div.pdf-actions p.last-updated {
+  color: #999 !important; /* Keep it less prominent but readable */
+}
+
+
+/* Fix page header */
+.page__hero--overlay .page__title,
+.page__hero--overlay .page__meta,
+.page__hero--overlay .page__lead,
+.page__hero--overlay .btn {
+  color: #eaeaea !important;
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.8);
+}
+
+/* Sidebar style */
+/* Reverted sidebar background change, keep only icon color */
+
+/* Fix sidebar icons only - not changing background */
+.author__urls-wrapper .author__urls .fa,
+.author__urls-wrapper .author__urls .fas,
+.author__urls-wrapper .author__urls .fab,
+.author__urls-wrapper .author__urls .far {
+  color: #00adb5 !important;
+}
+
+.author__urls-wrapper .author__urls a:hover .fa,
+.author__urls-wrapper .author__urls a:hover .fas,
+.author__urls-wrapper .author__urls a:hover .fab,
+.author__urls-wrapper .author__urls a:hover .far {
+  color: #00fff5 !important;
+}
+
+.masthead,
+.greedy-nav {
+  background: #1a1e24;
+}
+
+.greedy-nav a {
+  color: #eaeaea;
+}
+
+.greedy-nav a:hover {
+  color: #00adb5;
+}
+
+.greedy-nav .visible-links a:before {
+  background: #00adb5;
+}
+
+.greedy-nav .hidden-links {
+  background: #1a1e24;
+  border: 1px solid #3a414b;
+}
+
+.greedy-nav .hidden-links a {
+  color: #eaeaea;
+}
+
+.greedy-nav .hidden-links a:hover {
+  background: #252a34;
+}
+
+.page__footer {
+  background-color: #1a1e24;
+  color: #eaeaea;
+}
+
+.page__footer-follow a {
+  color: #eaeaea;
+}
+
+/* Footer social media icons - match sidebar icons style */
+.page__footer .social-icons .fa,
+.page__footer .social-icons .fas,
+.page__footer .social-icons .fab,
+.page__footer .social-icons .far {
+  color: #00adb5 !important;
+}
+
+.page__footer .social-icons a:hover .fa,
+.page__footer .social-icons a:hover .fas,
+.page__footer .social-icons a:hover .fab,
+.page__footer .social-icons a:hover .far {
+  color: #00fff5 !important;
+}
+
+pre, code {
+  background-color: #1e2329;
+  border-color: #3a414b;
+}
+
+a {
+  color: #00adb5;
+}
+
+a:hover {
+  color: #00fff5;
+}
+
+.btn {
+  background-color: #00adb5;
+  color: #eaeaea;
+}
+
+.btn:hover {
+  background-color: #00fff5;
+}
+
+.archive__item {
+  background-color: #1e2329;
+  border-color: #3a414b;
+}
+
+/* PDF viewer dark mode */
+.pdf-viewer {
+  border-color: #3a414b;
+}
+
+/* .last-updated general style - ensure this doesn't conflict or make it more specific if needed elsewhere */
+.last-updated {
+  color: #999; /* Default for other uses if any */
+} 
