@@ -127,16 +127,18 @@ body.layout--single div[itemscope] article.page .page__inner-wrap section.page__
 }
 
 .greedy-nav .hidden-links {
-  background: #1a1e24;
-  border: 1px solid #3a414b;
+  background: #1a1e24 !important;
+  border: 1px solid #3a414b !important;
 }
 
 .greedy-nav .hidden-links a {
-  color: #eaeaea;
+  color: #eaeaea !important;
+  border-color: #3a414b !important;
 }
 
 .greedy-nav .hidden-links a:hover {
-  background: #252a34;
+  background: #252a34 !important;
+  color: #00adb5 !important;
 }
 
 .page__footer {
