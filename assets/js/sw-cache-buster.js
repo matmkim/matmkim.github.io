@@ -1,6 +1,9 @@
 // 서비스 워커 - 버전 기반 캐시 버스팅
-const CACHE_VERSION = 'v2';
-const CACHE_NAME = 'site-cache-' + CACHE_VERSION + '-{{ site.site_version }}';
+const CACHE_VERSION = 'v3';
+// 타임스탬프 추가하여 항상 고유한 캐시 이름 사용
+const TIMESTAMP = new Date().getTime();
+const SITE_VERSION = '{{ site.site_version }}' || '1.0.0';
+const CACHE_NAME = `site-cache-${CACHE_VERSION}-${SITE_VERSION}-${TIMESTAMP}`;
 
 // 중요한 자산 파일 목록 
 const CRITICAL_ASSETS = [
