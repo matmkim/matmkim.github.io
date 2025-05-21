@@ -349,4 +349,4 @@ defaults:
       share: true
 
 # 캐시 버스팅을 위한 사이트 버전 (수정할 때마다 값을 변경하세요)
-site_version: 1.0.0
+site_version: 1.1.0

@@ -14,6 +14,18 @@
 <meta http-equiv="Pragma" content="no-cache">
 <meta http-equiv="Expires" content="0">
 
+<!-- 캐시 버스팅을 위한 JavaScript -->
+<script>
+  // 서비스 워커 등록 - 버전 기반 캐시 제어
+  document.addEventListener('DOMContentLoaded', function() {
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('/assets/js/sw-cache-buster.js?v={{ site.site_version }}')
+        .then(function() { console.log('서비스 워커 등록 성공'); })
+        .catch(function(err) { console.log('서비스 워커 등록 실패:', err); });
+    }
+  });
+</script>
+
 <script type="text/javascript">
   document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
   {% if site.enable_copy_code_button -%}
