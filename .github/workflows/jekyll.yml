@@ -54,6 +54,9 @@ jobs:
             orig_file="${file%.bak}"
             mv "$file" "$orig_file"
           done
+          
+          # .nojekyll 파일이 확실히 존재하는지 확인
+          touch .nojekyll
       - name: Setup Pages
         id: pages
         uses: actions/configure-pages@v5
@@ -62,6 +65,47 @@ jobs:
         run: bundle exec jekyll build --baseurl "${{ steps.pages.outputs.base_path }}"
         env:
           JEKYLL_ENV: production
+      - name: Cache invalidation for mobile browsers
+        run: |
+          # 모바일 브라우저를 위한 캐시 무효화 헤더 추가
+          echo 'Creating cache control files for mobile browsers...'
+          
+          # _site 폴더에 .htaccess 추가
+          cat > _site/.htaccess << 'EOL'
+          # 캐시 제어 헤더
+          <IfModule mod_headers.c>
+            # 모든 파일에 캐시 제어 헤더 추가
+            <FilesMatch "\.(html|htm|js|css|json|xml)$">
+              Header set Cache-Control "no-cache, no-store, must-revalidate, max-age=0"
+              Header set Pragma "no-cache"
+              Header set Expires "0"
+            </FilesMatch>
+          </IfModule>
+          
+          # 브라우저 캐싱 방지
+          <IfModule mod_expires.c>
+            ExpiresActive On
+            ExpiresDefault "access plus 0 seconds"
+          </IfModule>
+          EOL
+          
+          # _site 폴더에 _headers 추가 (Netlify 호환)
+          cat > _site/_headers << 'EOL'
+          # 모든 페이지에 적용
+          /*
+            Cache-Control: no-cache, no-store, must-revalidate, max-age=0
+            Pragma: no-cache
+            Expires: 0
+          EOL
+          
+          # _site 폴더에 Clear-Site-Data 메타 태그 자동 추가
+          find _site -name "*.html" -exec sed -i '/<\/head>/ i\<meta http-equiv="Clear-Site-Data" content="*">' {} \;
+          
+          # _site/index.html에 캐시 버스팅 타임스탬프 추가
+          TIMESTAMP=$(date +"%Y%m%d%H%M%S")
+          sed -i "s/<html /<html data-timestamp=\"$TIMESTAMP\" /" _site/index.html
+          
+          echo 'Cache invalidation files created.'
       - name: Upload artifact
         # Automatically uploads an artifact from the './_site' directory by default
         uses: actions/upload-pages-artifact@v3
