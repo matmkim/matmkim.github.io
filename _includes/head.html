@@ -15,12 +15,12 @@
 <meta http-equiv="Expires" content="0">
 
 <!-- 캐시 버스팅을 위한 JavaScript -->
-<script src="{{ '/assets/js/cache-buster.js' | relative_url }}?v={{ site.github.build_revision }}"></script>
+<script src="{{ '/assets/js/cache-buster.js.liquid' | relative_url }}?v={{ site.github.build_revision }}"></script>
 <script>
   // 서비스 워커 등록 - 버전 기반 캐시 제어
   document.addEventListener('DOMContentLoaded', function() {
     if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.register('/assets/js/sw-cache-buster.js?v={{ site.site_version }}')
+      navigator.serviceWorker.register('/assets/js/sw-cache-buster.js.liquid?v={{ site.site_version }}')
         .then(function() { console.log('서비스 워커 등록 성공'); })
         .catch(function(err) { console.log('서비스 워커 등록 실패:', err); });
     }

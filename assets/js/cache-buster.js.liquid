@@ -1,9 +1,12 @@
+---
+layout: null
+---
 // 캐시 버스팅을 위한 클라이언트 사이드 스크립트
 (function() {
   // 마지막 방문 시간 저장 키
   const LAST_VISIT_KEY = 'site_last_visit';
   // 현재 사이트 버전
-  const SITE_VERSION = '{{ site.site_version }}' || '1.0.0';
+  const SITE_VERSION = '{{ site.site_version }}';
   // 마지막으로 확인한 사이트 버전
   const LAST_VERSION_KEY = 'site_version';
   // 확인 간격 (1시간 = 3600000 밀리초) - 더 짧게 설정
@@ -34,8 +37,11 @@
       location.replace(reloadUrl);
     }
     
+    console.log('Cache-buster: 현재 버전 = ' + SITE_VERSION + ', 저장된 버전 = ' + lastVersion);
+    
     // 버전이 다르거나 마지막 방문 후 일정 시간이 지났으면 페이지 새로고침
     if (lastVersion !== SITE_VERSION || (now - parseInt(lastVisit, 10) > CHECK_INTERVAL)) {
+      console.log('Cache-buster: 새로고침 필요');
       // 문서가 이미 로드되었으면 바로 새로고침, 아니면 로드 이벤트 후 실행
       if (document.readyState === 'complete') {
         forceRefresh();

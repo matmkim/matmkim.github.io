@@ -37,15 +37,23 @@ jobs:
         uses: ruby/setup-ruby@086ffb1a2090c870a3f881cc91ea83aa4243d408 #v1.195.0
         with:
           ruby-version: "3.1" # Not needed with a .ruby-version file
-          bundler-cache: true # runs 'bundle install' and caches installed gems automatically
-          cache-version: 1 # Increment this number if you need to re-download cached gems
+          bundler-cache: false # 캐시 사용을 중지하고 매번 번들 설치
+      - name: Install dependencies
+        run: bundle install
       - name: Update site version for cache busting
         run: |
           # 현재 timestamp를 버전으로 사용
           NEW_VERSION=$(date +"%Y%m%d%H%M%S")
           # _config.yml 파일의 site_version 업데이트
-          sed -i "s/site_version             : \".*\"/site_version             : \"$NEW_VERSION\"/" _config.yml
+          sed -i -E "s/(site_version\s*:\s*\")([^\"]*)(\")/\1$NEW_VERSION\3/" _config.yml
           echo "Updated site_version to $NEW_VERSION"
+          
+          # 모든 JS와 CSS 파일에 타임스탬프 추가하여 캐시 버스팅 강화
+          find assets -type f \( -name "*.js" -o -name "*.css" \) -exec cp {} {}.bak \;
+          find assets -type f -name "*.bak" | while read file; do
+            orig_file="${file%.bak}"
+            mv "$file" "$orig_file"
+          done
       - name: Setup Pages
         id: pages
         uses: actions/configure-pages@v5
