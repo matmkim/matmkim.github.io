@@ -2,9 +2,9 @@
 layout: null
 ---
 // 서비스 워커 - 버전 기반 캐시 버스팅
-const CACHE_VERSION = 'v6';
-// 타임스탬프 추가하여 항상 고유한 캐시 이름 사용
-const TIMESTAMP = '{{ site.time | date: "%s" }}';
+const CACHE_VERSION = 'v7';
+// 빌드 타임스탬프 추가하여 배포마다 고유한 캐시 이름 사용
+const TIMESTAMP = '{{ site.time | date: "%Y%m%d%H%M%S" }}';
 const SITE_VERSION = '{{ site.site_version }}';
 const CACHE_NAME = `site-cache-${CACHE_VERSION}-${SITE_VERSION}-${TIMESTAMP}`;
 
@@ -28,7 +28,7 @@ const NETWORK_FIRST_PATTERNS = [
 
 // 서비스 워커 설치
 self.addEventListener('install', function(event) {
-  console.log('[ServiceWorker] 설치중... 버전:', CACHE_VERSION, '사이트 버전:', SITE_VERSION);
+  console.log('[ServiceWorker] 설치중... 버전:', CACHE_VERSION, '사이트 버전:', SITE_VERSION, '빌드 시간:', TIMESTAMP);
   
   // 즉시 활성화를 위한 대기 건너뛰기
   self.skipWaiting();
@@ -52,7 +52,7 @@ self.addEventListener('activate', function(event) {
     caches.keys().then(function(cacheNames) {
       return Promise.all(
         cacheNames.filter(function(cacheName) {
-          // 현재 버전이 아닌 캐시 삭제
+          // 현재 빌드/배포와 관련 없는 캐시만 삭제
           return cacheName.startsWith('site-cache-') && cacheName !== CACHE_NAME;
         }).map(function(cacheName) {
           console.log('[ServiceWorker] 이전 캐시 삭제:', cacheName);
@@ -87,7 +87,7 @@ self.addEventListener('fetch', function(event) {
   
   // HTML, CSS, JS 등 중요 자산 또는 모바일 브라우저는 네트워크 우선 전략 사용
   if (shouldUseNetworkFirst(event.request.url) || isMobile) {
-    console.log(`[ServiceWorker] 네트워크 우선 전략: ${event.request.url} (모바일:${isMobile})`);
+    console.log(`[ServiceWorker] 네트워크 우선 전략: ${event.request.url}`);
     
     event.respondWith(
       fetch(event.request, {

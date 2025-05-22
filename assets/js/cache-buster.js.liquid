@@ -13,8 +13,6 @@ layout: null
   const LAST_VERSION_KEY = 'site_version';
   // 마지막 빌드 타임스탬프 키
   const LAST_BUILD_TIME_KEY = 'site_build_time';
-  // 확인 간격 (30분 = 1800000 밀리초)
-  const CHECK_INTERVAL = 1800000;
   
   // 현재 시간
   const now = new Date().getTime();
@@ -69,37 +67,21 @@ layout: null
                 ', 빌드 시간=' + BUILD_TIME + 
                 ', 저장된 빌드 시간=' + lastBuildTime);
     
-    // 버전 또는 빌드 시간이 다르거나 마지막 방문 후 일정 시간이 지났으면 페이지 새로고침
+    // 버전 또는 빌드 시간이 다를 때만 페이지 새로고침 (시간 간격 체크 제거)
     const shouldRefresh = 
       lastVersion !== SITE_VERSION || 
-      lastBuildTime !== BUILD_TIME || 
-      (now - parseInt(lastVisit, 10) > CHECK_INTERVAL);
+      lastBuildTime !== BUILD_TIME;
     
     if (shouldRefresh) {
       console.log('Cache-buster: 새로고침 필요 - 이유: ' + 
                  (lastVersion !== SITE_VERSION ? '버전 변경' : 
-                  lastBuildTime !== BUILD_TIME ? '빌드 시간 변경' : '시간 경과'));
+                  lastBuildTime !== BUILD_TIME ? '빌드 시간 변경' : ''));
       
       // 문서가 이미 로드되었으면 바로 새로고침, 아니면 로드 이벤트 후 실행
       if (document.readyState === 'complete') {
         forceRefresh();
       } else {
         window.addEventListener('load', forceRefresh);
-      }
-    }
-    
-    // 세션 간 캐시를 무효화하기 위한 추가 조치
-    window.addEventListener('beforeunload', function() {
-      // 페이지를 떠날 때 세션 스토리지의 버전 정보 초기화
-      sessionStorage.setItem('page_needs_refresh', 'true');
-    });
-    
-    // 페이지 로드 시, 세션 스토리지에서 새로고침 필요 여부 확인
-    if (sessionStorage.getItem('page_needs_refresh') === 'true') {
-      sessionStorage.removeItem('page_needs_refresh');
-      // 페이지가 캐시에서 로드된 경우에만 새로고침
-      if (performance.navigation.type !== 1) {
-        forceRefresh();
       }
     }
   } catch (err) {
