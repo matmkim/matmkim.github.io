@@ -55,13 +55,12 @@ permalink: /cv/
     margin-bottom: 10px;
   }
   .last-updated {
-    margin-top: 10px !important;
     text-align: left;
     font-style: italic;
   }
   .pdf-viewer {
     width: 100%;
-    height: 800px; /* 고정 높이 설정 */
+    height: 800px; /* PC에서는 고정 높이 사용 */
     border: 1px solid #ddd;
     border-radius: 4px;
     overflow: hidden;
@@ -116,7 +115,12 @@ permalink: /cv/
   /* 모바일 기기를 위한 추가 스타일 */
   @media (max-width: 767px) {
     .pdf-viewer {
-      height: 500px; /* 모바일에서는 더 작은 고정 높이 */
+      height: auto; /* 모바일에서는 PDF 내용 전체 높이로 자동 조절 */
+      min-height: 500px; /* 최소 높이 설정 */
+      overflow-y: hidden; /* 스크롤바 숨김 (내부에서 스크롤됨) */
+    }
+    .pdf-object {
+       height: 100vh; /* PDF가 iframe 내에서 스크롤되도록 충분한 높이 부여 */
     }
     .pdf-actions {
       flex-direction: column;
