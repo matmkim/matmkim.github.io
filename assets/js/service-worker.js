@@ -1,10 +1,10 @@
 ---
 layout: null
 ---
-// 서비스 워커 - 버전 기반 캐시 버스팅 (URL 파라미터 없음)
+// 서비스 워커 - 버전 기반 캐시 버스팅
 const CACHE_VERSION = 'v6';
 // 타임스탬프 추가하여 항상 고유한 캐시 이름 사용
-const TIMESTAMP = {{ site.time | date: '%s' }};
+const TIMESTAMP = '{{ site.time | date: "%s" }}';
 const SITE_VERSION = '{{ site.site_version }}';
 const CACHE_NAME = `site-cache-${CACHE_VERSION}-${SITE_VERSION}-${TIMESTAMP}`;
 

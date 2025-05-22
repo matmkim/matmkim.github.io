@@ -60,7 +60,7 @@
         }
         
         // 새 서비스 워커 등록 - 캐시 방지 설정 사용
-        var swUrl = '/assets/js/sw-cache-buster.js.liquid';
+        var swUrl = '/assets/js/service-worker.js';
         navigator.serviceWorker.register(swUrl, {
           updateViaCache: 'none',
           scope: '/'
