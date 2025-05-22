@@ -68,3 +68,11 @@ body.layout--category #main .archive {
 }
 
 /* Remove all additional footer height styling */ 
+
+/* 팔로우 버튼과 햄버거 메뉴의 세모 꼭지 제거 - 모든 테마 적용 */
+.author__urls-wrapper .author__urls::before,
+.author__urls-wrapper .author__urls::after,
+.greedy-nav .hidden-links::before,
+.greedy-nav .hidden-links::after {
+  display: none !important;
+} 

@@ -80,6 +80,7 @@ permalink: /cv/
     font-weight: bold;
     text-decoration: none;
     border-radius: 4px;
+    border: 0.5px solid rgb(241.7, 242.5, 243.1) !important;
   }
   .mobile-pdf-notice {
     background-color:rgb(158, 58, 0);

@@ -35,6 +35,34 @@ a:visited {
   border: 1px solid #3a414b !important;
 }
 
+/* 더 강력한 선택자로 햄버거 메뉴 강제 다크모드 적용 */
+body[data-skin="dark"] .greedy-nav .hidden-links,
+html body .greedy-nav .hidden-links,
+.greedy-nav .hidden-links {
+  background-color: #1a1e24 !important;
+  border: 1px solid #3a414b !important;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5) !important;
+}
+
+body[data-skin="dark"] .hidden-links a,
+html body .greedy-nav .hidden-links a,
+.greedy-nav .hidden-links a {
+  color: #eaeaea !important;
+  border-color: #3a414b !important;
+}
+
+body[data-skin="dark"] .hidden-links a:hover,
+html body .greedy-nav .hidden-links a:hover,
+.greedy-nav .hidden-links a:hover {
+  background-color: #252a34 !important;
+  color: #00adb5 !important;
+}
+
+/* 다크모드 전환 시 즉시 스타일 적용을 위한 인라인 스타일 방지 */
+.greedy-nav .hidden-links[style*="background"] {
+  background-color: #1a1e24 !important;
+}
+
 .greedy-nav .hidden-links a {
   color: #eaeaea !important;
   border-color: #3a414b !important;
@@ -45,7 +73,7 @@ a:visited {
   color: #00adb5 !important;
 }
 
-/* Author URLs 창 스타일 */
+/* Author URLs 창 스타일 - 모바일/작은 화면 */
 .author__urls-wrapper .author__urls {
   background-color: #1a1e24 !important;
   border-color: #3a414b !important;
@@ -67,10 +95,31 @@ a:visited {
   border-bottom-color: #1a1e24 !important;
 } */
 
+/* 데스크톱/큰 화면에서 사이드바 스타일 조정 */
+@media (min-width: 64em) {
+  .author__urls-wrapper .author__urls {
+    background-color: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+  }
+  
+  .sidebar .author__urls {
+    background-color: transparent !important;
+    padding: 0 !important;
+    border: none !important;
+    box-shadow: none !important;
+  }
+  
+  .author__urls-wrapper .author__urls li a:hover {
+    background-color: transparent !important;
+  }
+}
+
 /* 모바일 팔로우 버튼 */
 .author__urls-wrapper button {
   background-color: #2c333f !important;
   color: #eaeaea !important;
+  border: 0.5px solid rgb(241.7, 242.5, 243.1) !important;
 }
 
 /* Custom Button Styles for Dark Mode */
@@ -136,4 +185,49 @@ pre {
 
 .highlight {
   background-color: #1f2229;
+}
+
+/* ===== 햄버거 메뉴 오버레이 배경 수정 ===== */
+.greedy-nav .greedy-nav__toggle:checked + label::before,
+.greedy-nav__toggle:checked + label::before,
+.greedy-nav::before {
+  background-color: rgba(0, 0, 0, 0.5) !important;
+}
+
+/* 메뉴 활성화 시 body에 추가되는 클래스에 대한 배경 처리 */
+body.overlay--active {
+  background-color: rgba(0, 0, 0, 0.5) !important;
+}
+
+/* 가능한 모든 네비게이션 오버레이 선택자 처리 */
+.navigation__overlay,
+.nav__overlay,
+.menu__overlay,
+.menu-overlay,
+.nav-overlay,
+.navbar-overlay,
+.overlay {
+  background-color: rgba(0, 0, 0, 0.5) !important;
+}
+
+/* 추가적인 모달 배경 처리 */
+.modal-backdrop,
+.modal__backdrop,
+.modal-bg,
+.modal-bg--active {
+  background-color: rgba(0, 0, 0, 0.5) !important;
+}
+
+.greedy-nav::before {
+  background-color: rgba(0, 0, 0, 0.5) !important;
+}
+
+/* 햄버거 메뉴 오버레이 배경색 다크모드 설정 */
+.greedy-nav__toggle:before {
+  background-color: #121212 !important;
+}
+
+.greedy-nav__toggle.close:before {
+  opacity: 0.9 !important;
+  background-color: #121212 !important;
 } 
