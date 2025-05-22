@@ -32,12 +32,12 @@ permalink: /cv/
   </div> -->
   
   <div class="pdf-viewer">
-    <!-- PDF 표시를 위해 object 태그 사용 (iframe보다 더 나은 호환성) -->
-    <object data="/assets/files/Matthew_Kim_CV.pdf" type="application/pdf" width="100%" height="100%" class="pdf-object">
+    <!-- PDF 표시를 위해 iframe 태그 사용 -->
+    <iframe src="/assets/files/Matthew_Kim_CV.pdf" width="100%" height="100%" class="pdf-object" frameborder="0">
       <div class="fallback-message">
         <p>PDF를 표시할 수 없습니다. <a href="/assets/files/Matthew_Kim_CV.pdf" download>여기를 클릭하여 PDF 파일을 다운로드하세요.</a></p>
       </div>
-    </object>
+    </iframe>
   </div>
 </div>
 
@@ -55,22 +55,24 @@ permalink: /cv/
     margin-bottom: 10px;
   }
   .last-updated {
-    margin: 0;
+    margin-top: 10px !important;
     text-align: left;
-    color: #666;
     font-style: italic;
   }
   .pdf-viewer {
     width: 100%;
-    height: 85vh; /* 화면 높이의 85%로 설정 */
+    height: 800px; /* 고정 높이 설정 */
     border: 1px solid #ddd;
     border-radius: 4px;
     overflow: hidden;
     position: relative;
+    background-color: white; /* PDF 배경색을 흰색으로 고정 */
   }
   .pdf-object {
     display: block;
     border: none;
+    width: 100%;
+    height: 100%;
   }
   .btn {
     display: inline-block;
@@ -114,7 +116,7 @@ permalink: /cv/
   /* 모바일 기기를 위한 추가 스타일 */
   @media (max-width: 767px) {
     .pdf-viewer {
-      height: 75vh; /* 모바일에서는 화면 높이의 75%로 설정 */
+      height: 500px; /* 모바일에서는 더 작은 고정 높이 */
     }
     .pdf-actions {
       flex-direction: column;
