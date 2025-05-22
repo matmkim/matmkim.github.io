@@ -41,7 +41,7 @@ a:visited {
 }
 
 .greedy-nav .hidden-links a:hover {
-  /* background-color: #2c333f !important; */
+  background-color: #2c333f !important;
   color: #00adb5 !important;
 }
 
