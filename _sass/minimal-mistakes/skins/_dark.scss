@@ -5,7 +5,7 @@
 /* Colors */
 $background-color: #252a34 !default;
 $text-color: #eaeaea !default;
-$primary-color: #00adb5 !default;
+$primary-color: #6c6c6c !default;
 $border-color: mix(#fff, $background-color, 20%) !default;
 $code-background-color: mix(#000, $background-color, 15%) !default;
 $code-background-color-dark: mix(#000, $background-color, 20%) !default;
@@ -17,6 +17,47 @@ $link-color-visited: mix(#000, $link-color, 25%) !default;
 $masthead-link-color: $text-color !default;
 $masthead-link-color-hover: mix(#000, $text-color, 20%) !default;
 $navicon-link-color-hover: mix(#000, $background-color, 30%) !default;
+
+/* Custom Button Styles for Dark Mode */
+.btn--primary {
+  background-color: #6c757d !important;
+  color: #ffffff !important;
+  border: 1px solid #6c757d !important;
+}
+
+.btn--primary:hover {
+  background-color: #5a6268 !important;
+  color: #ffffff !important;
+  border: 1px solid #5a6268 !important;
+}
+
+.btn--primary:visited {
+  color: #ffffff !important;
+}
+
+/* Dark Mode Styles for Author URLs Button (mobile) */
+.author__urls-wrapper button {
+  background-color: #6c757d !important;
+  color: #ffffff !important;
+}
+
+.author__urls-wrapper button:hover {
+  background-color: #5a6268 !important;
+  color: #ffffff !important;
+}
+
+/* Ensure navicon inside the button also adapts if it's part of the visible button */
+.author__urls-wrapper button .navicon,
+.author__urls-wrapper button .navicon::before,
+.author__urls-wrapper button .navicon::after {
+  background-color: #ffffff !important;
+}
+
+.author__urls-wrapper button:hover .navicon,
+.author__urls-wrapper button:hover .navicon::before,
+.author__urls-wrapper button:hover .navicon::after {
+  background-color: #f0f0f0 !important;
+}
 
 .author__urls.social-icons i,
 .author__urls.social-icons .svg-inline--fa,

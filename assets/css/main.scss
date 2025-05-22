@@ -15,3 +15,22 @@ body #main .splash {
 ul ul {
   font-size: 0.9rem;
 }
+
+/* 다크모드 버튼 스타일 변경 (이 부분은 _dark.scss로 이동했으므로 제거) */
+/*
+body[data-skin="dark"] {
+  .btn--primary {
+    background-color: #6c757d !important; 
+    color: #f8f9fa !important; 
+    
+    &:hover {
+      background-color: #5a6268 !important; 
+      color: #ffffff !important;
+    }
+    
+    &:visited {
+      color: #f8f9fa !important;
+    }
+  }
+}
+*/

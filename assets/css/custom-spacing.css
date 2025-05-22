@@ -43,6 +43,10 @@ body.layout--category #main .archive {
     padding-right: 20px !important;
   }
   
+  .author__content {
+    padding-top: 8px !important;
+  }
+
   .page__footer-follow,
   .page__footer-copyright {
     padding-left: 20px !important;

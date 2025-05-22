@@ -149,6 +149,7 @@
   vertical-align: top;
   padding-inline: 15px 25px;
   line-height: 1;
+  margin-top: 40px;
 
   @include breakpoint($large) {
     display: block;

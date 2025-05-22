@@ -99,14 +99,14 @@ body.layout--single div[itemscope] article.page .page__inner-wrap section.page__
 .author__urls-wrapper .author__urls .fas,
 .author__urls-wrapper .author__urls .fab,
 .author__urls-wrapper .author__urls .far {
-  color: #00adb5 !important;
+  color: #13aab2 !important;
 }
 
 .author__urls-wrapper .author__urls a:hover .fa,
 .author__urls-wrapper .author__urls a:hover .fas,
 .author__urls-wrapper .author__urls a:hover .fab,
 .author__urls-wrapper .author__urls a:hover .far {
-  color: #00fff5 !important;
+  color: #18b8c0 !important;
 }
 
 .masthead,
@@ -172,20 +172,21 @@ pre, code {
 }
 
 a {
-  color: #00adb5;
+  color: #007d83;
 }
 
 a:hover {
-  color: #00fff5;
+  color: #00b4ae;
 }
 
 .btn {
-  background-color: #00adb5;
+  background-color: #6a6a6a;
   color: #eaeaea;
 }
 
 .btn:hover {
-  background-color: #00fff5;
+  background-color: #7a7a7a;
+  color: #eaeaea;
 }
 
 .archive__item {
