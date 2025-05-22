@@ -29,6 +29,50 @@ a:visited {
   background-color: #252a34;
 }
 
+/* 햄버거 메뉴 - 드롭다운 스타일 */
+.greedy-nav .hidden-links {
+  background-color: #1a1e24 !important;
+  border: 1px solid #3a414b !important;
+}
+
+.greedy-nav .hidden-links a {
+  color: #eaeaea !important;
+  border-color: #3a414b !important;
+}
+
+.greedy-nav .hidden-links a:hover {
+  /* background-color: #2c333f !important; */
+  color: #00adb5 !important;
+}
+
+/* Author URLs 창 스타일 */
+.author__urls-wrapper .author__urls {
+  background-color: #1a1e24 !important;
+  border-color: #3a414b !important;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5) !important;
+}
+
+.author__urls-wrapper .author__urls li a {
+  color: #eaeaea !important;
+  /* border-bottom: 1px solid #3a414b !important; */
+}
+
+.author__urls-wrapper .author__urls li a:hover {
+  /* background-color: #2c333f !important; */
+  color: #00adb5 !important;
+}
+
+/* .author__urls-wrapper .author__urls::before,
+.author__urls-wrapper .author__urls::after {
+  border-bottom-color: #1a1e24 !important;
+} */
+
+/* 모바일 팔로우 버튼 */
+.author__urls-wrapper button {
+  background-color: #2c333f !important;
+  color: #eaeaea !important;
+}
+
 /* Custom Button Styles for Dark Mode */
 .btn--primary {
   background-color: #6c757d !important;
