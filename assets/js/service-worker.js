@@ -2,7 +2,7 @@
 layout: null
 ---
 // 서비스 워커 - 버전 기반 캐시 버스팅
-const CACHE_VERSION = 'v7';
+const CACHE_VERSION = 'v8';
 // 빌드 타임스탬프 추가하여 배포마다 고유한 캐시 이름 사용
 const TIMESTAMP = '{{ site.time | date: "%Y%m%d%H%M%S" }}';
 const SITE_VERSION = '{{ site.site_version }}';
@@ -15,7 +15,8 @@ const CRITICAL_ASSETS = [
   '/assets/js/main.min.js',
   '/index.html',
   '/',
-  '/offline.html'
+  '/offline.html',
+  '/assets/files/Matthew_Kim_CV.pdf' // PDF 파일을 중요 자산으로 추가
 ];
 
 // 네트워크 우선, 캐시 폴백 전략을 사용할 URL 패턴
@@ -23,7 +24,8 @@ const NETWORK_FIRST_PATTERNS = [
   /\/$/, // 홈페이지 및 하위 경로
   /\.html$/, // HTML 파일
   /\.js$/, // JavaScript 파일
-  /\.css$/ // CSS 파일
+  /\.css$/, // CSS 파일
+  /\.pdf$/ // PDF 파일도 네트워크 우선 처리
 ];
 
 // 서비스 워커 설치
@@ -74,6 +76,11 @@ function isMobileBrowser(userAgent) {
   return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(userAgent);
 }
 
+// PDF 파일인지 확인하는 함수
+function isPDF(url) {
+  return url.endsWith('.pdf');
+}
+
 // 네트워크 요청 처리
 self.addEventListener('fetch', function(event) {
   // 다른 출처의 요청은 무시
@@ -81,12 +88,15 @@ self.addEventListener('fetch', function(event) {
     return;
   }
   
+  // PDF 파일인지 확인
+  const isPdfRequest = isPDF(event.request.url);
+  
   // 모바일 브라우저 감지
   const isMobile = event.request.headers.get('user-agent') && 
                    isMobileBrowser(event.request.headers.get('user-agent'));
   
-  // HTML, CSS, JS 등 중요 자산 또는 모바일 브라우저는 네트워크 우선 전략 사용
-  if (shouldUseNetworkFirst(event.request.url) || isMobile) {
+  // PDF 파일, HTML, CSS, JS 등 중요 자산 또는 모바일 브라우저는 네트워크 우선 전략 사용
+  if (isPdfRequest || shouldUseNetworkFirst(event.request.url) || isMobile) {
     console.log(`[ServiceWorker] 네트워크 우선 전략: ${event.request.url}`);
     
     event.respondWith(
@@ -115,6 +125,10 @@ self.addEventListener('fetch', function(event) {
         // 네트워크 실패 시 캐시에서 가져오기
         console.log('[ServiceWorker] 네트워크 실패, 캐시에서 가져오기:', event.request.url);
         return caches.match(event.request).then(function(response) {
+          // PDF 파일이면서 캐시에 없는 경우, 오프라인 페이지 대신 null 반환
+          if (isPdfRequest && !response) {
+            return null;
+          }
           return response || caches.match('/offline.html');
         });
       })
