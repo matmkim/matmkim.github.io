@@ -7,7 +7,7 @@ permalink: /cv/
 
 <div class="pdf-container">
   <div class="pdf-actions">
-    <p class="last-updated">Last Updated: May 2025</p>
+    <p class="last-updated">Last Updated: Oct 2025</p>
     <a href="/assets/files/Matthew_Kim_CV.pdf" class="btn btn--primary" download>Download CV</a>
   </div>
   
@@ -33,7 +33,7 @@ permalink: /cv/
   
   <div class="pdf-viewer">
     <!-- Native browser PDF viewer with preloading -->
-    <iframe id="pdf-iframe" src="/assets/files/Matthew_Kim_CV.pdf#toolbar=1&navpanes=1&scrollbar=1" 
+    <iframe id="pdf-iframe" src="/assets/files/Matthew_Kim_CV.pdf#toolbar=1&navpanes=0&scrollbar=1&view=FitH&pagemode=none" 
       class="pdf-object" frameborder="0" scrolling="auto" 
       onload="handlePdfLoad()" onerror="handlePdfError()"></iframe>
     <!-- 대체 링크 -->
@@ -198,10 +198,28 @@ permalink: /cv/
     
     // 캐시 버스팅을 위한 타임스탬프 추가
     const timestamp = new Date().getTime();
-    const pdfUrl = `/assets/files/Matthew_Kim_CV.pdf?t=${timestamp}#toolbar=1&navpanes=1&scrollbar=1`;
+    const pdfUrl = `/assets/files/Matthew_Kim_CV.pdf?t=${timestamp}#toolbar=1&navpanes=0&scrollbar=1&view=FitH&pagemode=none`;
     
     // iframe src 업데이트
     iframe.src = pdfUrl;
+    
+    // Chrome에서 썸네일 숨기기 위한 추가 처리
+    iframe.addEventListener('load', function() {
+      try {
+        // Chrome에서 썸네일 패널 강제 숨김
+        const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
+        if (iframeDoc) {
+          // 썸네일 패널 요소 찾아서 숨김
+          const thumbnails = iframeDoc.querySelectorAll('[data-testid="thumbnails"], .thumbnails, #thumbnails');
+          thumbnails.forEach(thumb => {
+            thumb.style.display = 'none';
+          });
+        }
+      } catch (e) {
+        // 크로스 오리진 정책으로 접근 불가능한 경우 무시
+        console.log('PDF iframe access restricted');
+      }
+    });
     
     // PDF 프리로딩을 위한 링크 생성
     const preloadLink = document.createElement('link');
