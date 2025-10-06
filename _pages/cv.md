@@ -32,12 +32,17 @@ permalink: /cv/
   </div> -->
   
   <div class="pdf-viewer">
-    <!-- Google Docs PDF 뷰어 사용 -->
-    <iframe src="https://docs.google.com/viewer?url=https://matmkim.github.io/assets/files/Matthew_Kim_CV.pdf&embedded=true" 
-      class="pdf-object" frameborder="0" scrolling="auto"></iframe>
+    <!-- Native browser PDF viewer with preloading -->
+    <iframe id="pdf-iframe" src="/assets/files/Matthew_Kim_CV.pdf#toolbar=1&navpanes=1&scrollbar=1" 
+      class="pdf-object" frameborder="0" scrolling="auto" 
+      onload="handlePdfLoad()" onerror="handlePdfError()"></iframe>
     <!-- 대체 링크 -->
-    <div class="mobile-fallback">
+    <div class="mobile-fallback" id="pdf-fallback" style="display: none;">
       <p>PDF를 불러오는 중 문제가 발생했거나 보이지 않는 경우, <a href="/assets/files/Matthew_Kim_CV.pdf" target="_blank">여기를 클릭하여 직접 열어보세요</a>.</p>
+    </div>
+    <!-- 로딩 인디케이터 -->
+    <div class="pdf-loading" id="pdf-loading">
+      <p>PDF를 불러오는 중...</p>
     </div>
   </div>
 </div>
@@ -146,24 +151,92 @@ permalink: /cv/
     margin-top: 10px;
     font-size: 14px;
   }
+  
+  .pdf-loading {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 20px;
+    border-radius: 4px;
+    z-index: 10;
+  }
+  
+  .pdf-loading.hidden {
+    display: none;
+  }
 </style>
 
 <script>
-  // PDF 로딩 오류 감지 및 대체 메시지 표시
+  // PDF 로딩 상태 관리
+  let pdfLoadTimeout;
+  let pdfLoaded = false;
+  
+  // PDF 로드 성공 핸들러
+  function handlePdfLoad() {
+    console.log('PDF loaded successfully');
+    pdfLoaded = true;
+    clearTimeout(pdfLoadTimeout);
+    document.getElementById('pdf-loading').classList.add('hidden');
+  }
+  
+  // PDF 로드 오류 핸들러
+  function handlePdfError() {
+    console.log('PDF failed to load');
+    clearTimeout(pdfLoadTimeout);
+    document.getElementById('pdf-loading').classList.add('hidden');
+    document.getElementById('pdf-fallback').style.display = 'block';
+  }
+  
+  // PDF 프리로딩 및 로딩 상태 관리
   document.addEventListener('DOMContentLoaded', function() {
-    const iframe = document.querySelector('.pdf-object');
-    const fallback = document.querySelector('.mobile-fallback');
+    const iframe = document.getElementById('pdf-iframe');
+    const loading = document.getElementById('pdf-loading');
+    const fallback = document.getElementById('pdf-fallback');
     
-    // 5초 후에도 PDF가 로드되지 않으면 대체 메시지 표시
-    setTimeout(function() {
-      try {
-        // iframe 내용 접근 시도
-        const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
-        // 액세스 가능하면 정상 로드로 간주
-      } catch (e) {
-        // 오류 발생 시 대체 메시지 표시
+    // 캐시 버스팅을 위한 타임스탬프 추가
+    const timestamp = new Date().getTime();
+    const pdfUrl = `/assets/files/Matthew_Kim_CV.pdf?t=${timestamp}#toolbar=1&navpanes=1&scrollbar=1`;
+    
+    // iframe src 업데이트
+    iframe.src = pdfUrl;
+    
+    // PDF 프리로딩을 위한 링크 생성
+    const preloadLink = document.createElement('link');
+    preloadLink.rel = 'preload';
+    preloadLink.href = `/assets/files/Matthew_Kim_CV.pdf?t=${timestamp}`;
+    preloadLink.as = 'document';
+    document.head.appendChild(preloadLink);
+    
+    // 10초 후에도 로드되지 않으면 대체 메시지 표시
+    pdfLoadTimeout = setTimeout(function() {
+      if (!pdfLoaded) {
+        console.log('PDF loading timeout');
+        loading.classList.add('hidden');
         fallback.style.display = 'block';
       }
-    }, 5000);
+    }, 10000);
+    
+    // iframe 로드 이벤트 리스너 추가
+    iframe.addEventListener('load', function() {
+      // 추가 검증을 위해 잠시 후 체크
+      setTimeout(function() {
+        try {
+          // iframe이 정상적으로 로드되었는지 확인
+          const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
+          if (iframeDoc && iframeDoc.readyState === 'complete') {
+            handlePdfLoad();
+          }
+        } catch (e) {
+          // 크로스 오리진 정책으로 인한 접근 제한은 정상적인 경우
+          // PDF가 로드되었다고 가정
+          handlePdfLoad();
+        }
+      }, 1000);
+    });
+    
+    iframe.addEventListener('error', handlePdfError);
   });
 </script> 
