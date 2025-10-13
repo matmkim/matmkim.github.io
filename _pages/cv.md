@@ -125,9 +125,9 @@ permalink: /cv/
   /* 모바일 기기를 위한 추가 스타일 */
   @media (max-width: 767px) {
     .pdf-viewer {
-      height: 500px; /* 모바일에서는 고정 높이로 변경 */
-      overflow: auto;
-      -webkit-overflow-scrolling: touch;
+      height: 100vh; /* 화면 높이만큼 차지 */
+      overflow: auto; /* 내부 스크롤 허용 */
+      -webkit-overflow-scrolling: touch; /* iOS 부드러운 스크롤 */
     }
     .pdf-object {
       height: 100%;
