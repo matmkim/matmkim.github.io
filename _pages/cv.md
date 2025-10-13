@@ -21,7 +21,10 @@ permalink: /cv/
     document.addEventListener('DOMContentLoaded', function() {
       // 모바일 기기에서는 다운로드 권장 메시지 표시
       if (isMobile()) {
-        document.getElementById('mobile-notice').style.display = 'block';
+        var mobileNoticeEl = document.getElementById('mobile-notice');
+        if (mobileNoticeEl) {
+          mobileNoticeEl.style.display = 'block';
+        }
       }
     });
   </script>
@@ -123,7 +126,8 @@ permalink: /cv/
   @media (max-width: 767px) {
     .pdf-viewer {
       height: 500px; /* 모바일에서는 고정 높이로 변경 */
-      overflow: hidden;
+      overflow: auto;
+      -webkit-overflow-scrolling: touch;
     }
     .pdf-object {
       height: 100%;

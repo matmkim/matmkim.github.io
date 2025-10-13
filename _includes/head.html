@@ -18,32 +18,28 @@
 <meta name="apple-mobile-web-app-capable" content="no">
 <meta name="mobile-web-app-capable" content="no">
 
-<!-- 버전 정보와 즉시 새로고침 스크립트 (우선 실행) -->
+<!-- 버전 정보와 새로고침 스크립트 (bfcache 복원 시 1회만) -->
 <script>
-  // 페이지가 캐시에서 로드되었는지 확인하여 즉시 새로고침
   (function() {
-    // 캐시된 페이지 강제 새로고침 - 특히 모바일에서 효과적
-    if (navigator.userAgent.match(/(iPhone|iPad|iPod|Android)/i)) {
-      // 모바일 기기에서 더 적극적인 캐시 방지
-      window.onpageshow = function(event) {
-        if (event.persisted || (window.performance && window.performance.navigation.type === 2)) {
-          window.location.reload(true);
+    var isMobile = /(iPhone|iPad|iPod|Android)/i.test(navigator.userAgent);
+    if (!isMobile) return;
+
+    // bfcache(뒤로가기 캐시)로부터 복원 시에만, 그리고 세션당 1회만 강제 새로고침
+    window.addEventListener('pageshow', function (event) {
+      try {
+        if (event.persisted) {
+          var key = 'bfcache-refresh-done';
+          if (!sessionStorage.getItem(key)) {
+            sessionStorage.setItem(key, '1');
+            location.reload();
+          }
         }
-      };
-      
-      // 추가 보호 계층 - 로딩 시간으로 캐시된 페이지 감지
-      var pageLoadStart = Date.now();
-      window.addEventListener('DOMContentLoaded', function() {
-        var loadTime = Date.now() - pageLoadStart;
-        // 페이지가 너무 빨리 로드되면 (200ms 미만) 캐시에서 온 것으로 가정
-        if (loadTime < 200) {
-          console.log('캐시에서 로드된 것으로 추정, 새로고침 실행');
-          window.location.reload(true);
-        }
-      });
-    }
+      } catch (e) {
+        // sessionStorage 불가 환경에서는 아무 작업도 하지 않음
+      }
+    });
   })();
-</script>
+  </script>
 
 <!-- 캐시 버스팅을 위한 JavaScript - 인라인 버전 번호 사용 (URL 파라미터 없음) -->
 <script src="{{ '/assets/js/cache-buster.js.liquid' | relative_url }}"></script>
@@ -63,7 +59,8 @@
         var swUrl = '/assets/js/service-worker.js';
         navigator.serviceWorker.register(swUrl, {
           updateViaCache: 'none',
-          scope: '/'
+          // scope must be within or equal to the script path; set to assets/js/
+          scope: '/assets/js/'
         })
           .then(function(reg) { 
             // 서비스 워커 업데이트 강제 적용
