@@ -125,9 +125,9 @@ permalink: /cv/
   /* 모바일 기기를 위한 추가 스타일 */
   @media (max-width: 767px) {
     .pdf-viewer {
-      height: 100vh; /* 화면 높이만큼 차지 */
-      overflow: auto; /* 내부 스크롤 허용 */
-      -webkit-overflow-scrolling: touch; /* iOS 부드러운 스크롤 */
+      height: 500px; /* 모바일에서는 고정 높이로 변경 */
+      overflow: auto;
+      -webkit-overflow-scrolling: touch;
     }
     .pdf-object {
       height: 100%;
@@ -199,13 +199,18 @@ permalink: /cv/
     const iframe = document.getElementById('pdf-iframe');
     const loading = document.getElementById('pdf-loading');
     const fallback = document.getElementById('pdf-fallback');
+    const isIOS = function () { return /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream; };
     
-    // 캐시 버스팅을 위한 타임스탬프 추가
-    const timestamp = new Date().getTime();
-    const pdfUrl = `/assets/files/Matthew_Kim_CV.pdf?t=${timestamp}#toolbar=1&navpanes=0&scrollbar=1&view=FitH&pagemode=none`;
-    
-    // iframe src 업데이트
-    iframe.src = pdfUrl;
+    // iOS는 Google Docs Viewer 사용 (멀티페이지 지원)
+    const pdfAbs = location.origin + '/assets/files/Matthew_Kim_CV.pdf';
+    if (isIOS()) {
+      iframe.src = 'https://docs.google.com/viewer?embedded=true&url=' + encodeURIComponent(pdfAbs);
+    } else {
+      // 캐시 버스팅을 위한 타임스탬프 추가 + 네이티브 뷰어
+      const timestamp = new Date().getTime();
+      const pdfUrl = `/assets/files/Matthew_Kim_CV.pdf?t=${timestamp}#toolbar=1&navpanes=0&scrollbar=1&view=FitH&pagemode=none`;
+      iframe.src = pdfUrl;
+    }
     
     // Chrome에서 썸네일 숨기기 위한 추가 처리
     iframe.addEventListener('load', function() {
