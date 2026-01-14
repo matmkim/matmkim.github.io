@@ -7,7 +7,7 @@ permalink: /cv/
 
 <div class="pdf-container">
   <div class="pdf-actions">
-    <p class="last-updated">Last Updated: Oct 2025</p>
+    <p class="last-updated">Last Updated: Jan 2026</p>
     <a href="/assets/files/Matthew_Kim_CV.pdf" class="btn btn--primary" download>Download CV</a>
   </div>
   
