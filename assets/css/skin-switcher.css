@@ -4,41 +4,50 @@
   bottom: 20px;
   right: 20px;
   z-index: 1000;
-  width: 50px;
-  height: 50px;
+  width: 44px;
+  height: 44px;
   border-radius: 50%;
-  background-color: #f0f0f0;
-  color: #333;
-  border: none;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  background-color: #ffffff;
+  color: #1f2937;
+  border: 1px solid rgba(17, 24, 39, 0.12);
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.18);
   cursor: pointer;
-  font-size: 1.2em;
+  font-size: 1rem;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: all 0.3s ease;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
 }
 
 #skin-toggle:hover {
-  background-color: #e0e0e0;
-  transform: scale(1.05);
+  background-color: #f8fafc;
+  transform: translateY(-1px);
+  box-shadow: 0 8px 18px rgba(15, 23, 42, 0.22);
+}
+
+#skin-toggle:focus-visible {
+  outline: 2px solid #6f9dff;
+  outline-offset: 2px;
 }
 
 /* Dark skin specific styles for the toggle button */
 body[data-skin="dark"] #skin-toggle {
-  background-color: #333;
-  color: #f0f0f0;
+  background-color: #1d2430;
+  color: #e6ebf2;
+  border-color: #3a4658;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.35);
 }
 
 body[data-skin="dark"] #skin-toggle:hover {
-  background-color: #444;
+  background-color: #263244;
+  box-shadow: 0 10px 22px rgba(0, 0, 0, 0.45);
 }
 
 /* Animation for the icon */
 #skin-toggle i {
-  transition: transform 0.5s ease;
+  transition: transform 0.35s ease;
 }
 
 #skin-toggle:hover i {
-  transform: rotate(30deg);
-} 
+  transform: rotate(20deg);
+}

@@ -1,233 +1,205 @@
 /* ==========================================================================
-   Dark skin
+   Dark skin - minimal professional palette
    ========================================================================== */
 
-/* 기본 스타일 적용 */
-body {
-  background-color: #252a34;
-  color: #eaeaea;
+:root {
+  --dm-bg: #242b36;
+  --dm-header-surface: #232a32;
+  --dm-footer-surface: #181d22;
+  --dm-surface-elevated: #2d3643;
+  --dm-border: #485566;
+  --dm-text: #e6ebf2;
+  --dm-text-muted: #adb8c8;
+  --dm-link: #5f87c5;
+  --dm-link-hover: #8faedd;
+  --dm-accent: #5f6c80;
 }
 
-a {
-  color: #eaeaea !important;
+body[data-skin="dark"] {
+  background-color: var(--dm-bg);
+  color: var(--dm-text);
 }
 
-a:hover {
-  color: #c4c4c4;
+body[data-skin="dark"] .page__content,
+body[data-skin="dark"] .archive {
+  color: var(--dm-text);
 }
 
-a:visited {
-  color: #7f7f7f;
+/* Markdown/page headers in white */
+body[data-skin="dark"] .page__title,
+body[data-skin="dark"] .page__title a,
+body[data-skin="dark"] .page__content h1,
+body[data-skin="dark"] .page__content h2,
+body[data-skin="dark"] .page__content h3,
+body[data-skin="dark"] .page__content h4,
+body[data-skin="dark"] .page__content h5,
+body[data-skin="dark"] .page__content h6 {
+  color: #f5f7fb !important;
 }
 
-.page__footer {
-  background-color: #191c22;
-  color: #eaeaea !important;
+body[data-skin="dark"] .page__title a:visited,
+body[data-skin="dark"] .page__title a:hover,
+body[data-skin="dark"] .page__title a:focus {
+  color: #ffffff !important;
 }
 
-.masthead, .greedy-nav {
-  background-color: #252a34;
+body[data-skin="dark"] a {
+  color: var(--dm-link);
 }
 
-/* 햄버거 메뉴 - 드롭다운 스타일 */
-.greedy-nav .hidden-links {
-  background-color: #1a1e24 !important;
-  border: 1px solid #3a414b !important;
+body[data-skin="dark"] a:hover {
+  color: var(--dm-link-hover);
 }
 
-/* 더 강력한 선택자로 햄버거 메뉴 강제 다크모드 적용 */
-body[data-skin="dark"] .greedy-nav .hidden-links,
-html body .greedy-nav .hidden-links,
-.greedy-nav .hidden-links {
-  background-color: #1a1e24 !important;
-  border: 1px solid #3a414b !important;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5) !important;
+body[data-skin="dark"] a:visited {
+  color: #94b6ea;
 }
 
-body[data-skin="dark"] .hidden-links a,
-html body .greedy-nav .hidden-links a,
-.greedy-nav .hidden-links a {
-  color: #eaeaea !important;
-  border-color: #3a414b !important;
+/* Keep header/nav text neutral white for less distraction */
+body[data-skin="dark"] .greedy-nav a,
+body[data-skin="dark"] .greedy-nav a.site-title,
+body[data-skin="dark"] .masthead__menu-item a {
+  color: #f5f7fb !important;
 }
 
-body[data-skin="dark"] .hidden-links a:hover,
-html body .greedy-nav .hidden-links a:hover,
-.greedy-nav .hidden-links a:hover {
-  background-color: #252a34 !important;
-  color: #00adb5 !important;
+body[data-skin="dark"] .greedy-nav a:hover,
+body[data-skin="dark"] .greedy-nav a:visited,
+body[data-skin="dark"] .masthead__menu-item a:hover,
+body[data-skin="dark"] .masthead__menu-item a:visited {
+  color: #ffffff !important;
 }
 
-/* 다크모드 전환 시 즉시 스타일 적용을 위한 인라인 스타일 방지 */
-.greedy-nav .hidden-links[style*="background"] {
-  background-color: #1a1e24 !important;
+body[data-skin="dark"] .greedy-nav__toggle .navicon,
+body[data-skin="dark"] .greedy-nav__toggle .navicon::before,
+body[data-skin="dark"] .greedy-nav__toggle .navicon::after {
+  background-color: #f5f7fb;
 }
 
-.greedy-nav .hidden-links a {
-  color: #eaeaea !important;
-  border-color: #3a414b !important;
+body[data-skin="dark"] .masthead,
+body[data-skin="dark"] .greedy-nav {
+  background-color: var(--dm-header-surface);
 }
 
-.greedy-nav .hidden-links a:hover {
-  background-color: #2c333f !important;
-  color: #00adb5 !important;
+body[data-skin="dark"] .page__footer {
+  background-color: var(--dm-footer-surface);
 }
 
-/* Author URLs 창 스타일 - 모바일/작은 화면 */
-.author__urls-wrapper .author__urls {
-  background-color: #1a1e24 !important;
-  border-color: #3a414b !important;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5) !important;
+body[data-skin="dark"] .page__footer {
+  color: #f5f7fb;
 }
 
-.author__urls-wrapper .author__urls li a {
-  color: #eaeaea !important;
-  /* border-bottom: 1px solid #3a414b !important; */
+body[data-skin="dark"] .page__footer a,
+body[data-skin="dark"] .page__footer-copyright,
+body[data-skin="dark"] .page__footer-follow,
+body[data-skin="dark"] .page__footer-follow .social-icons a {
+  color: #f5f7fb !important;
 }
 
-.author__urls-wrapper .author__urls li a:hover {
-  /* background-color: #2c333f !important; */
-  color: #00adb5 !important;
+/* Sidebar author name in white */
+body[data-skin="dark"] .author__name,
+body[data-skin="dark"] .author__name a {
+  color: #f5f7fb !important;
 }
 
-/* .author__urls-wrapper .author__urls::before,
-.author__urls-wrapper .author__urls::after {
-  border-bottom-color: #1a1e24 !important;
-} */
+body[data-skin="dark"] .author__urls li i,
+body[data-skin="dark"] .author__urls .fa-map-marker-alt,
+body[data-skin="dark"] .author__urls .fa-envelope-square,
+body[data-skin="dark"] .author__urls .p-locality,
+body[data-skin="dark"] .author__urls .label {
+  color: #f5f7fb !important;
+}
 
-/* 데스크톱/큰 화면에서 사이드바 스타일 조정 */
+/* Keep social icons (including GitHub) visible in dark mode */
+body[data-skin="dark"] .author__urls .social-icons i,
+body[data-skin="dark"] .author__urls .social-icons .svg-inline--fa,
+body[data-skin="dark"] .author__urls i.fab,
+body[data-skin="dark"] .author__urls i.fa-github,
+body[data-skin="dark"] .page__footer .social-icons i,
+body[data-skin="dark"] .page__footer .social-icons .svg-inline--fa,
+body[data-skin="dark"] .page__footer i.fab,
+body[data-skin="dark"] .page__footer i.fa-github {
+  color: #f5f7fb !important;
+}
+
+body[data-skin="dark"] .greedy-nav .hidden-links {
+  background-color: var(--dm-surface-elevated) !important;
+  border: 1px solid var(--dm-border) !important;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+}
+
+body[data-skin="dark"] .greedy-nav .hidden-links a {
+  color: var(--dm-text) !important;
+  border-color: var(--dm-border) !important;
+}
+
+body[data-skin="dark"] .greedy-nav .hidden-links a:hover {
+  background-color: #293446 !important;
+  color: var(--dm-link-hover) !important;
+}
+
+body[data-skin="dark"] .author__urls-wrapper .author__urls {
+  background-color: var(--dm-surface-elevated);
+  border: 1px solid var(--dm-border);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+}
+
+body[data-skin="dark"] .author__urls-wrapper .author__urls li a {
+  color: var(--dm-text);
+}
+
+body[data-skin="dark"] .author__urls-wrapper .author__urls li a:hover {
+  color: var(--dm-link-hover);
+}
+
 @media (min-width: 64em) {
-  .author__urls-wrapper .author__urls {
-    background-color: transparent !important;
-    border: none !important;
-    box-shadow: none !important;
-  }
-  
-  .sidebar .author__urls {
-    background-color: transparent !important;
-    padding: 0 !important;
-    border: none !important;
-    box-shadow: none !important;
-  }
-  
-  .author__urls-wrapper .author__urls li a:hover {
-    background-color: transparent !important;
+  body[data-skin="dark"] .author__urls-wrapper .author__urls,
+  body[data-skin="dark"] .sidebar .author__urls {
+    background-color: transparent;
+    border: 0;
+    box-shadow: none;
   }
 }
 
-/* 모바일 팔로우 버튼 */
-.author__urls-wrapper button {
-  background-color: #2c333f !important;
-  color: #eaeaea !important;
-  border: 0.5px solid rgb(241.7, 242.5, 243.1) !important;
+body[data-skin="dark"] .author__urls-wrapper button {
+  background-color: var(--dm-surface-elevated);
+  color: var(--dm-text);
+  border: 1px solid var(--dm-border);
 }
 
-/* Custom Button Styles for Dark Mode */
-.btn--primary {
-  background-color: #6c757d !important;
-  color: #ffffff !important;
-  border: 1px solid #6c757d !important;
+body[data-skin="dark"] .author__urls-wrapper button:hover {
+  background-color: #2b3647;
 }
 
-.btn--primary:hover {
-  background-color: #5a6268 !important;
-  color: #ffffff !important;
-  border: 1px solid #5a6268 !important;
+body[data-skin="dark"] .btn--primary {
+  background-color: var(--dm-accent);
+  border: 1px solid var(--dm-accent);
+  color: #f8fbff !important;
 }
 
-.btn--primary:visited {
+body[data-skin="dark"] .btn--primary:hover {
+  background-color: #6b788c;
+  border-color: #6b788c;
   color: #ffffff !important;
 }
 
-/* Dark Mode Styles for Author URLs Button (mobile) */
-.author__urls-wrapper button {
-  background-color: #6c757d !important;
-  color: #ffffff !important;
+body[data-skin="dark"] .btn--primary:visited {
+  color: #f8fbff !important;
 }
 
-.author__urls-wrapper button:hover {
-  background-color: #5a6268 !important;
-  color: #ffffff !important;
+body[data-skin="dark"] .ais-search-box .ais-search-box--input,
+body[data-skin="dark"] code,
+body[data-skin="dark"] pre,
+body[data-skin="dark"] .highlight {
+  background-color: #151b25;
+  border-color: var(--dm-border);
 }
 
-/* Ensure navicon inside the button also adapts if it's part of the visible button */
-.author__urls-wrapper button .navicon,
-.author__urls-wrapper button .navicon::before,
-.author__urls-wrapper button .navicon::after {
-  background-color: #ffffff !important;
+body[data-skin="dark"] .incoming-note {
+  color: #bec4d2;
 }
 
-.author__urls-wrapper button:hover .navicon,
-.author__urls-wrapper button:hover .navicon::before,
-.author__urls-wrapper button:hover .navicon::after {
-  background-color: #f0f0f0 !important;
+body[data-skin="dark"] .greedy-nav .greedy-nav__toggle:checked + label::before,
+body[data-skin="dark"] .greedy-nav__toggle:checked + label::before,
+body[data-skin="dark"] .greedy-nav::before {
+  background-color: rgba(0, 0, 0, 0.55) !important;
 }
-
-.author__urls.social-icons i,
-.author__urls.social-icons .svg-inline--fa,
-.page__footer-follow .social-icons i,
-.page__footer-follow .social-icons .svg-inline--fa  {
-  color: inherit;
-}
-
-.ais-search-box .ais-search-box--input {
-  background-color: #202630;
-}
-
-/* code 스타일 */
-code {
-  background-color: #1f2229;
-}
-
-pre {
-  background-color: #1f2229;
-}
-
-.highlight {
-  background-color: #1f2229;
-}
-
-/* ===== 햄버거 메뉴 오버레이 배경 수정 ===== */
-.greedy-nav .greedy-nav__toggle:checked + label::before,
-.greedy-nav__toggle:checked + label::before,
-.greedy-nav::before {
-  background-color: rgba(0, 0, 0, 0.5) !important;
-}
-
-/* 메뉴 활성화 시 body에 추가되는 클래스에 대한 배경 처리 */
-body.overlay--active {
-  background-color: rgba(0, 0, 0, 0.5) !important;
-}
-
-/* 가능한 모든 네비게이션 오버레이 선택자 처리 */
-.navigation__overlay,
-.nav__overlay,
-.menu__overlay,
-.menu-overlay,
-.nav-overlay,
-.navbar-overlay,
-.overlay {
-  background-color: rgba(0, 0, 0, 0.5) !important;
-}
-
-/* 추가적인 모달 배경 처리 */
-.modal-backdrop,
-.modal__backdrop,
-.modal-bg,
-.modal-bg--active {
-  background-color: rgba(0, 0, 0, 0.5) !important;
-}
-
-.greedy-nav::before {
-  background-color: rgba(0, 0, 0, 0.5) !important;
-}
-
-/* 햄버거 메뉴 오버레이 배경색 다크모드 설정 */
-.greedy-nav__toggle:before {
-  background-color: #121212 !important;
-}
-
-.greedy-nav__toggle.close:before {
-  opacity: 0.9 !important;
-  background-color: #121212 !important;
-} 

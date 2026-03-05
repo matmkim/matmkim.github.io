@@ -1,0 +1,31 @@
+{% assign cv_pdf_url = page.cv_pdf_url | default: '/assets/files/Matthew_Kim_CV.pdf' %}
+{% assign cv_last_updated = page.cv_last_updated | default: 'Jan 2026' %}
+
+<div class="pdf-container" data-pdf-url="{{ cv_pdf_url | relative_url }}">
+  <div class="pdf-actions">
+    <p class="last-updated">Last Updated: {{ cv_last_updated }}</p>
+    <a href="{{ cv_pdf_url | relative_url }}" class="btn btn--primary" download>Download CV</a>
+  </div>
+
+  <div class="pdf-viewer">
+    <iframe
+      id="pdf-iframe"
+      src="{{ cv_pdf_url | relative_url }}#toolbar=1&navpanes=0&scrollbar=1&view=FitH&pagemode=none"
+      class="pdf-object"
+      frameborder="0"
+      scrolling="auto"
+      title="Matthew Kim CV"
+    ></iframe>
+
+    <div class="mobile-fallback" id="pdf-fallback">
+      <p>
+        PDF를 불러오는 중 문제가 발생했거나 보이지 않는 경우,
+        <a href="{{ cv_pdf_url | relative_url }}" target="_blank" rel="noopener noreferrer">여기를 클릭하여 직접 열어보세요</a>.
+      </p>
+    </div>
+
+    <div class="pdf-loading" id="pdf-loading">
+      <p>PDF를 불러오는 중...</p>
+    </div>
+  </div>
+</div>

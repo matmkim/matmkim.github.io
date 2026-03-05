@@ -6,6 +6,12 @@
   <script src="{{ '/assets/js/main.min.js' | relative_url }}"></script>
 {% endif %}
 
+{% if page.custom_js %}
+  {% for script in page.custom_js %}
+    <script src="{{ script | relative_url }}"></script>
+  {% endfor %}
+{% endif %}
+
 {% if site.search == true or page.layout == "search" %}
   {%- assign search_provider = site.search_provider | default: "lunr" -%}
   {%- case search_provider -%}

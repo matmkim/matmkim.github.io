@@ -5,8 +5,11 @@ permalink: /
 
 ---
 
-I am an undergraduate student majoring in Computer Science and Engineering at Seoul National University. My primary interests span AI, Algebra, and software engineering, areas in which I have actively engaged through various research projects and internships. I am currently serving as an AI researcher in the Republic of Korea Air Force.
+I am an undergraduate student in Computer Science and Engineering at Seoul National University.  
+I previously graduated from Korea Science Academy of KAIST (Top 10%).  
 
-Previously, I studied at the Korea Science Academy of KAIST, graduating in the top 10% of my class.
+Currently, I serve as an AI Researcher for the Republic of Korea Air Force, building military-specific AI systems. 
 
-I am always eager to embrace new challenges and seek opportunities that allow me to grow and make meaningful contributions.
+My primary interests span multimodal AI, algebra, and software engineering. I am always open to new research challenges!
+
+**Incoming:** Research Intern @ [Vision & Learning Lab](https://vision.snu.ac.kr/)  *(starting Aug 2026)*

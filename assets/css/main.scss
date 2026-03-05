@@ -16,6 +16,10 @@ ul ul {
   font-size: 0.9rem;
 }
 
+.incoming-note {
+  color: #7b7b7b;
+}
+
 /* 다크모드 버튼 스타일 변경 (이 부분은 _dark.scss로 이동했으므로 제거) */
 /*
 body[data-skin="dark"] {
