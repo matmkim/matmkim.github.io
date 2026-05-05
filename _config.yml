@@ -116,7 +116,8 @@ analytics:
 author:
   name             : "Matthew Minwoo Kim"
   avatar           : "profile.PNG" # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
-  bio              : "CS Undergraduate @ SNU"
+  bio              : "CS Undergraduate @ SNU<br>Kim Jaechul AI Class"
+
   location         : "Seoul National University"
   email            : "matthewkim.stu@gmail.com"
   links:

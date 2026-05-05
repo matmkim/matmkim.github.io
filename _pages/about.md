@@ -12,4 +12,7 @@ Currently, I serve as an AI Researcher for the Republic of Korea Air Force, cond
 
 My primary interests span multimodal AI, algebra, and software engineering. I am always open to new research challenges!
 
-Joined the [Vision & Learning Lab](https://vision.snu.ac.kr/) as an Undergraduate Research Intern *(April 2026 – Present)*
+
+### News
+- Joined the [Vision & Learning Lab](https://vision.snu.ac.kr/) as an Undergraduate Research Intern. *(April 2026 – Present)*
+- Selected for the Kim Jaechul AI Class, a special track within SNU’s Interdisciplinary Major in AI.
