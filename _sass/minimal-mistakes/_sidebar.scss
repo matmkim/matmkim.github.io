@@ -34,6 +34,8 @@
       */
       padding-inline: 1em;
       max-height: calc(100vh - #{$nav-height} - 2em);
+      max-height: calc(100svh - #{$nav-height} - 2em);
+      max-height: calc(100dvh - #{$nav-height} - 2em);
     }
   }
 
@@ -95,6 +97,8 @@
         .toc__menu {
           overflow-y: auto;
           max-height: calc(100vh - 7em);
+          max-height: calc(100svh - 7em);
+          max-height: calc(100dvh - 7em);
         }
       }
     }

@@ -19,10 +19,11 @@ html {
   }
 
   @include breakpoint($x-large) {
-    font-size: 22px;
+    font-size: 20px;
   }
 
   -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
   -ms-text-size-adjust: 100%;
 }
 
@@ -181,4 +182,13 @@ input[type="search"]::-webkit-search-cancel-button {
 textarea {
   overflow: auto; /* remove vertical scrollbar in IE6-9*/
   vertical-align: top; /* readability and alignment cross-browser*/
+}
+
+/* iOS Safari can auto-zoom small form controls and make typography feel inconsistent */
+@supports (-webkit-touch-callout: none) {
+  input,
+  select,
+  textarea {
+    font-size: 16px;
+  }
 }
