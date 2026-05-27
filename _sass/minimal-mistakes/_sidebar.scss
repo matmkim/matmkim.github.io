@@ -18,7 +18,7 @@
 
   @include breakpoint($large) {
     float: inline-start;
-    width: calc(#{$right-sidebar-width-narrow} - 1em);
+    width: #{$right-sidebar-width-narrow};
     opacity: 0.75;
     -webkit-transition: opacity 0.2s ease-in-out;
     transition: opacity 0.2s ease-in-out;
@@ -32,6 +32,7 @@
       /* calculate height of nav list
          viewport height - nav height - masthead x-padding
       */
+      padding-inline: 1em;
       max-height: calc(100vh - #{$nav-height} - 2em);
     }
   }
@@ -147,7 +148,7 @@
 .author__content {
   display: table-cell;
   vertical-align: top;
-  padding-inline: 15px 25px;
+  padding-inline: 20px 25px;
   line-height: 1;
   margin-top: 40px;
 

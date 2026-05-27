@@ -1,6 +1,6 @@
 /* Custom spacing between header and main content */
 body #main .page {
-  padding-top: 20px !important;
+  padding-top: 20px;
 }
 
 /* Apply padding to archive pages that are NOT in a category layout */
@@ -27,7 +27,7 @@ body.layout--category #main .archive {
 }
 
 /* Spacing for mobile/narrow views - background extends fully, content has margin */
-@media (max-width: 768px) {
+@media (max-width: 1023px) {
   /* Background containers extend to edge with no padding */
   .masthead,
   .page__footer {
@@ -37,22 +37,27 @@ body.layout--category #main .archive {
     margin-right: 0 !important;
   }
   
-  /* Inner content has padding */
-  .masthead__inner-wrap {
-    padding-left: 20px !important; 
-    padding-right: 20px !important;
-  }
-  
-  .author__content {
-    padding-top: 8px !important;
+  .h-card {
+    padding-inline: 1em !important; /* Add horizontal padding to h-card for better spacing on mobile */
   }
 
-  .page__footer-follow,
-  .page__footer-copyright {
-    padding-left: 20px !important;
-    padding-right: 20px !important;
+  .page {
+  padding-top: 0px !important;
+}
+
+  .page__inner-wrap {
+    padding-inline: 1em;
   }
   
+  /* Inner content has padding */
+  .masthead__inner-wrap {
+    padding-inline: 2em !important; 
+  }
+  
+  .author__avatar, .author__content {
+    padding-top: 8px !important;
+  }
+    
   /* Main content has padding */
   .initial-content {
     padding-left: 10px !important;

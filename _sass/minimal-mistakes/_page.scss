@@ -37,12 +37,14 @@ body {
   @include breakpoint($large) {
     float: inline-end;
     width: calc(100% - #{$right-sidebar-width-narrow});
-    padding-inline-end: $right-sidebar-width-narrow /2.4 ;
+    padding-inline-start: 1em;
+    padding-inline-end: $right-sidebar-width-narrow / 4.0 ;
   }
 
   @include breakpoint($x-large) {
     width: calc(100% - #{$right-sidebar-width});
-    padding-inline-end: $right-sidebar-width/2.4 ;
+    padding-inline-start: 1em;
+    padding-inline-end: $right-sidebar-width/ 4.0 ;
   }
 
   .page__inner-wrap {
