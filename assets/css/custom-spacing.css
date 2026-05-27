@@ -36,6 +36,10 @@ body.layout--category #main .archive {
     margin-left: 0 !important;
     margin-right: 0 !important;
   }
+
+  #main {
+    padding-inline: 1em !important; /* Add horizontal padding to main content on mobile */
+  }
   
   .h-card {
     padding-inline: 1em !important; /* Add horizontal padding to h-card for better spacing on mobile */
@@ -63,7 +67,8 @@ body.layout--category #main .archive {
     padding-left: 10px !important;
     padding-right: 10px !important;
   }
-   */
+  */
+
   /* Body reset */
   body {
     padding-left: 0 !important;
