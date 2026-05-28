@@ -2,8 +2,6 @@
 ---
 
 @charset "utf-8";
-@import url("https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&display=swap");
 
 @import "minimal-mistakes/skins/{{ site.minimal_mistakes_skin | default: 'default' }}"; // skin
 @import "minimal-mistakes"; // main partials
@@ -34,14 +32,43 @@ ul ul {
   color: #7b7b7b;
 }
 
-/* Keep date labels visually aligned in About > News without changing font size */
-.news-date {
-  display: inline-block;
-  min-width: 10ch;
-  white-space: nowrap;
-  font-family: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-  font-variant-numeric: tabular-nums;
+.news-list {
+  display: table;
+  border: 0;
+  border-collapse: collapse;
+  width: auto;
+  margin: 0;
+  font-family: inherit;
+  font-size: 0.8em;
+
+  td {
+    border: 0;
+    padding: 0 0 0.25em 0;
+  }
+
+  tr:last-child td {
+    padding-bottom: 0;
+  }
 }
+
+.news-month,
+.news-year {
+  white-space: nowrap;
+}
+
+.news-month {
+  width: 2.4em;
+  padding-right: 0.35em !important;
+}
+
+.news-year {
+  padding-right: 0.8em !important;
+}
+
+.news-item {
+  padding-right: 0;
+}
+
 
 /* 다크모드 버튼 스타일 변경 (이 부분은 _dark.scss로 이동했으므로 제거) */
 /*
