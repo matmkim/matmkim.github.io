@@ -9,7 +9,7 @@ Hi! I'm Matthew Minwoo Kim, an undergraduate student at Seoul National Universit
 Currently, I serve as an AI Researcher for the Republic of Korea Air Force. 
 Previously, I graduated from the Korea Science Academy of KAIST.
 
-My primary research interests span multimodal AI, representation learning, and ML.
+My primary research interests span multimodal AI and representation learning.
 I am always open to new research opportunities and collaborations!
 
 ### News
