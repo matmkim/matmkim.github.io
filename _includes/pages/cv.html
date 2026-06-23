@@ -1,16 +1,30 @@
 {% assign cv_pdf_url = page.cv_pdf_url | default: '/assets/files/Matthew_Kim_CV.pdf' %}
+{% assign cv_download_url = page.cv_pdf_download_url | default: cv_pdf_url %}
 {% assign cv_last_updated = page.cv_last_updated | default: 'Jan 2026' %}
+{% assign cv_pdf_href = cv_pdf_url %}
+{% assign cv_download_href = cv_download_url %}
+{% unless cv_pdf_url contains '://' %}
+  {% assign cv_pdf_href = cv_pdf_url | relative_url %}
+{% endunless %}
+{% unless cv_download_url contains '://' %}
+  {% assign cv_download_href = cv_download_url | relative_url %}
+{% endunless %}
 
-<div class="pdf-container" data-pdf-url="{{ cv_pdf_url | relative_url }}">
+<div class="pdf-container" data-pdf-url="{{ cv_pdf_href }}">
   <div class="pdf-actions">
     <p class="last-updated">Last Updated: {{ cv_last_updated }}</p>
-    <a href="{{ cv_pdf_url | relative_url }}" class="btn btn--primary" download>Download CV</a>
+    <a
+      href="{{ cv_download_href }}"
+      class="btn btn--primary"
+      {% unless cv_download_href contains '://' %}download{% endunless %}
+      {% if cv_download_href contains '://' %}target="_blank" rel="noopener noreferrer"{% endif %}
+    >Download CV</a>
   </div>
 
   <div class="pdf-viewer">
     <iframe
       id="pdf-iframe"
-      src="{{ cv_pdf_url | relative_url }}#toolbar=1&navpanes=0&scrollbar=1&view=FitH&pagemode=none"
+      src="{{ cv_pdf_href }}"
       class="pdf-object"
       frameborder="0"
       scrolling="auto"
@@ -20,7 +34,7 @@
     <div class="mobile-fallback" id="pdf-fallback">
       <p>
         PDF를 불러오는 중 문제가 발생했거나 보이지 않는 경우,
-        <a href="{{ cv_pdf_url | relative_url }}" target="_blank" rel="noopener noreferrer">여기를 클릭하여 직접 열어보세요</a>.
+        <a href="{{ cv_pdf_href }}" target="_blank" rel="noopener noreferrer">여기를 클릭하여 직접 열어보세요</a>.
       </p>
     </div>
 

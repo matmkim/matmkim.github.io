@@ -21,26 +21,25 @@
     return /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
   }
 
-  function pdfUrlWithCacheBust(pdfPath) {
-    const url = new URL(pdfPath, window.location.href);
-    url.searchParams.set("t", Date.now());
-    return url;
+  function isAbsoluteUrl(url) {
+    return /^https?:\/\//i.test(url);
   }
 
-  function hideNativePdfSidebar(iframe) {
-    try {
-      const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
-      if (!iframeDoc) {
-        return;
-      }
+  function isGoogleDrivePreview(url) {
+    return /^https:\/\/drive\.google\.com\/file\/d\/[^/]+\/preview/i.test(url);
+  }
 
-      const thumbnails = iframeDoc.querySelectorAll("[data-testid='thumbnails'], .thumbnails, #thumbnails");
-      thumbnails.forEach(function (thumb) {
-        thumb.style.display = "none";
-      });
-    } catch (error) {
-      // Ignore cross-origin restrictions from embedded PDF viewers.
-    }
+  function toAbsoluteUrl(url) {
+    return new URL(url, location.href).href;
+  }
+
+  function addCacheBuster(url, timestamp) {
+    const separator = url.indexOf("?") === -1 ? "?" : "&";
+    return url + separator + "t=" + timestamp;
+  }
+
+  function withPdfFragment(url) {
+    return url + "#toolbar=1&navpanes=0&scrollbar=1&view=FitH&pagemode=none";
   }
 
   document.addEventListener("DOMContentLoaded", function () {
@@ -53,29 +52,40 @@
       return;
     }
 
-    const pdfPath = container.getAttribute("data-pdf-url") || DEFAULT_PDF_PATH;
-    const pdfUrl = pdfUrlWithCacheBust(pdfPath);
-    const pdfDocumentUrl = pdfUrl.toString();
-    let pdfLoaded = false;
+    const pdfPath = container.getAttribute("data-pdf-url") || "/assets/files/Matthew_Kim_CV.pdf";
+    const pdfAbs = toAbsoluteUrl(pdfPath);
+    const timestamp = Date.now();
+    const isExternal = isAbsoluteUrl(pdfPath);
 
-    function finishLoad() {
-      pdfLoaded = true;
-      clearTimeout(loadTimeout);
-      hideLoading(loading);
-    }
-
-    if (isIOS()) {
-      iframe.src = "https://docs.google.com/viewer?embedded=true&url=" + encodeURIComponent(pdfDocumentUrl);
+    if (isGoogleDrivePreview(pdfPath)) {
+      iframe.src = pdfPath;
+    } else if (isIOS()) {
+      iframe.src = "https://docs.google.com/viewer?embedded=true&url=" + encodeURIComponent(pdfAbs);
     } else {
-      pdfUrl.hash = PDF_VIEW_OPTIONS;
-      iframe.src = pdfUrl.toString();
+      iframe.src = withPdfFragment(addCacheBuster(pdfPath, timestamp));
     }
 
-    const preloadLink = document.createElement("link");
-    preloadLink.rel = "preload";
-    preloadLink.href = pdfDocumentUrl;
-    preloadLink.as = "document";
-    document.head.appendChild(preloadLink);
+    iframe.addEventListener("load", function () {
+      try {
+        const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
+        if (iframeDoc) {
+          const thumbnails = iframeDoc.querySelectorAll("[data-testid='thumbnails'], .thumbnails, #thumbnails");
+          thumbnails.forEach(function (thumb) {
+            thumb.style.display = "none";
+          });
+        }
+      } catch (e) {
+        // Ignore cross-origin restrictions from embedded PDF viewers.
+      }
+    });
+
+    if (!isExternal) {
+      const preloadLink = document.createElement("link");
+      preloadLink.rel = "preload";
+      preloadLink.href = addCacheBuster(pdfPath, timestamp);
+      preloadLink.as = "document";
+      document.head.appendChild(preloadLink);
+    }
 
     const loadTimeout = setTimeout(function () {
       if (!pdfLoaded) {
