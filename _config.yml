@@ -22,7 +22,7 @@ title_separator          : "|"
 subtitle                 : # site tagline that appears below site title in masthead
 name                     : ""
 description              : "My personal website"
-url                      : https://matmkim.github.io # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
+url                      : https://matmkim.dev # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
 baseurl                  : # the subpath of your site, e.g. "/blog"
 repository               : "matmkim/matmkim.github.io" # GitHub username/repo-name e.g. "mmistakes/minimal-mistakes"
 teaser                   : # path of fallback teaser image, e.g. "/assets/images/500x300.png"
@@ -33,7 +33,6 @@ words_per_minute         : 200
 enable_copy_code_button  : # true, false (default)
 copyright                : Matthew Minwoo Kim # "copyright" name, defaults to site.title
 copyright_url            : https://www.linkedin.com/in/minwoo-kim-b24a48287/ # "copyright" URL, defaults to site.url
-site_version             : "1.0.2" # 캐시 버스팅을 위한 사이트 버전
 comments:
   provider               : # false (default), "disqus", "discourse", "facebook", "staticman", "staticman_v2", "utterances", "giscus", "custom"
   disqus:
@@ -115,7 +114,7 @@ analytics:
 # Site Author
 author:
   name             : "Matthew Minwoo Kim"
-  avatar           : "profile.PNG" # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
+  avatar           : "profile.jpg" # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
   bio              : "CS Undergraduate @ SNU<br>Kim Jaechul AI Class"
 
   location         : "Seoul National University"
